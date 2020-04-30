@@ -1,0 +1,21 @@
+= form_with model: @article, local: true do |f|
+  .form-group
+    = f.label "タイトル"
+    = f.text_field :title, class: 'form-control', id: 'task_name'
+  .form-group
+    = f.label "概要"
+    = f.text_area :summary, rows: 3, class: 'form-control', id: ''
+  .form-group
+    = f.label "活動内容"
+    = f.text_area :content, rows: 5, class: 'form-control', id: ''
+  .form-group
+    = f.label "Keep(良かったこと)"
+    = f.text_area :good_point, rows: 5, class: 'form-control', id: ''
+  .form-group
+    = f.label "Ploblem(悪かったこと)"
+    = f.text_area :ploblem, rows: 5, class: 'form-control', id: ''
+  .form-group
+    = f.label "Try(次にやること)"
+    = f.text_area :tyr, rows: 5, class: 'form-control', id: ''
+
+  =f.submit nil, class: 'btn btn-default text-danger'
