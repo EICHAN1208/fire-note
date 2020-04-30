@@ -7,19 +7,21 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-danger
-      .navbar-brand
-      header
-        .header-space
-          .header-logo
-            = link_to "fireノート", "/articles"
 
-      - if current_user
-        li.nav-item= link_to 'ストック一覧', "/articles", class: 'nav-link'
-        li.nav-item= link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link'
-      - else
-        li.nav-item= link_to 'ログイン', "/users/sign_in", class: 'nav-link'
+  body
+    .bg-danger
+      header
+        .container
+          nav.navbar.navbar-expand
+            .navbar-brand.mr-auto
+              = link_to "fireノート", "/articles", class: "text-white"
+            ul.navbar-nav
+              - if current_user
+                li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
+                li.nav-item = link_to 'ストック一覧', "/articles", class: 'nav-link text-white'
+                li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
+              - else
+                li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
 
     .container
       p.notice = notice

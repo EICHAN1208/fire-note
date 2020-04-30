@@ -1,2 +1,7 @@
 h1 記事一覧
-= link_to '投稿する', new_article_path, class: 'btn btn-danger'
+
+- if @articles.present?
+  - @articles.each do |article|
+    = link_to article.title
+- else
+  p 記事が1つもありません。
