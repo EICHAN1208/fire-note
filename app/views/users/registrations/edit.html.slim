@@ -1,4 +1,4 @@
-.box
+
   h2
     | Edit
     = resource_name.to_s.humanize
@@ -39,6 +39,19 @@
         | (we need your current password to confirm your changes)
       br
       = f.password_field :current_password, autocomplete: "current-password"
+
+    .circle-avatar
+      - if current_user.persisted? && current_user.avatar?
+        = image_tag current_user.avatar.to_s
+        label
+          = f.check_box :remove_avatar
+          | 画像を削除
+      - else
+        = image_tag 'no_avatar.png'
+        = f.hidden_field :avatar_cache
+      = f.file_field :avatar
+
+
     .actions
       = f.submit "Update"
   h3
