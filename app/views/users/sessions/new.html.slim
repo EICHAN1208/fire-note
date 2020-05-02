@@ -1,0 +1,17 @@
+.box.mx-auto
+  .text-center.text-danger.mb-5
+    h2 fireノートへようこそ!
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group.text-center
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .form-group.text-center
+      = f.password_field :password, autocomplete: "current-password"
+    - if devise_mapping.rememberable?
+      .form-group.form-check.text-center.text-danger
+        = f.check_box :remember_me
+        = f.label :remember_me
+    .form-group.text-center
+        = render "users/shared/links"
+        br
+        = f.submit "ログイン", class: "btn btn-danger btn-lg"

@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-  get 'articles/new'
-  get 'articles/show'
-  get 'articles/edit'
-  devise_for :users
+  devise_for :users, controllers: {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+}
   root 'top#index'
 
 

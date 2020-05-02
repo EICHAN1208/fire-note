@@ -23,7 +23,7 @@ html
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
 
-    .container
-      p.notice = notice
-      p.alert = alert
+    .container.fullheight
+      .notice = notice
+      .alert = alert
       = yield
