@@ -1,2 +1,22 @@
 h1 Articles#show
-p Find me in app/views/articles/show.html.slim
+
+
+= link_to user_path(@article.user) do
+  = image_tag @article.user.avatar.thumb.url, class: ''
+  = link_to @article.user.name, user_path(@article.user)
+- if @article.user == current_user
+  = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article)
+  = link_to icon('fas', 'trash-alt', '削除する'), article_path(@article), method: :delete,
+                                                  data: { confirm: "削除してもよろしいですか？" }
+
+h1 = @article.title
+h2 概要
+p = @article.summary
+h2 活動内容
+p = @article.content
+h2 Keep
+p = @article.good_point
+h2 Ploblem
+p = @article.problem
+h2 Try
+p = @article.try

@@ -3,7 +3,6 @@
     = image_tag current_user.avatar.to_s
   - else
     = image_tag 'no_avatar.png'
-    = f.hidden_field :avatar_cache
   span
   = @user.name
   | さんの投稿一覧
