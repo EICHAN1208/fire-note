@@ -7,7 +7,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :articles
-  has_many :likes
-  has_many :stocks
-  has_many :comments
+  # has_many :likes
+  # has_many :stocks
+  # has_many :comments
 end

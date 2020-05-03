@@ -11,6 +11,15 @@ body {
   margin: 0;
 }
 
+.wrapper {
+  background-image: image-url("firefighters.png");
+  height: 825px;
+  background-size: cover;
+}
+
+.text-box {
+}
+
 .fullheight {
   height: 100%;
 }

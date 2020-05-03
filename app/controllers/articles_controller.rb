@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     if @article.save
-      redirect_to articles_path, notice: "記事を投稿しました！"
+      redirect_to article_path, notice: "記事を投稿しました！"
     else
       render :new
     end
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     if @article.destroy!
-      redirect_to root_path, notice: "記事を削除しました！"
+      redirect_to articles_path, notice: "記事を削除しました！"
     else
       render :show
     end
