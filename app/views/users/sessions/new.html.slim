@@ -1,9 +1,11 @@
+.label.text-white.text-center.bg-danger.w-25
+  h1 FIREノート
 
-  .text-center.text-danger.mb-5
-    h2 fireノートへようこそ!
+.box-container.text-center.mt-5
+  h2 fireノートへようこそ!
 
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .form-group.text-center
+    .form-group.text-center.mt-5
       = f.email_field :email, autofocus: true, autocomplete: "email"
     .form-group.text-center
       = f.password_field :password, autocomplete: "current-password"

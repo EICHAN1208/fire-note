@@ -22,8 +22,10 @@ html
                 li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
-
-    .container.fullheight
+    .text-center
       .notice = notice
       .alert = alert
+
+    .container.fullheight
+
       = yield

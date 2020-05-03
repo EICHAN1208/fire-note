@@ -9,7 +9,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+    .text-center
+      p.notice.mb-0 = notice
+      p.alert.mb-0 = alert
     .container.fullheight
-      / p.notice = notice
-      / p.alert = alert
+
       = yield

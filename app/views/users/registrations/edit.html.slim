@@ -9,7 +9,6 @@
       = f.label :名前
       br
       = f.text_field :name, autofocus: true
-
     .field
       = f.label :email
       br
@@ -19,27 +18,9 @@
         | Currently waiting confirmation for:
         = resource.unconfirmed_email
     .field
-      = f.label :password
-      i
-        | (leave blank if you don't want to change it)
+      = f.label :所属する消防
       br
-      = f.password_field :password, autocomplete: "new-password"
-      - if @minimum_password_length
-        br
-        em
-          = @minimum_password_length
-          |  characters minimum
-    .field
-      = f.label :password_confirmation
-      br
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .field
-      = f.label :current_password
-      i
-        | (we need your current password to confirm your changes)
-      br
-      = f.password_field :current_password, autocomplete: "current-password"
-
+      = f.text_field :organization, autofocus: true
     .circle-avatar
       - if current_user.persisted? && current_user.avatar?
         = image_tag current_user.avatar.to_s
@@ -50,6 +31,28 @@
         = image_tag 'no_avatar.png'
         = f.hidden_field :avatar_cache
       = f.file_field :avatar
+    .field
+      = f.label :password
+      i
+        | (変更しない場合は空白のままにします)
+      br
+      = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+        br
+        em
+          = @minimum_password_length
+          |  文字以上入力
+    .field
+      = f.label :password_confirmation
+      br
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .field
+      = f.label :current_password
+      i
+        | (変更するには現在のパスワードが必要です)
+      br
+      = f.password_field :current_password, autocomplete: "current-password"
+
 
 
     .actions
