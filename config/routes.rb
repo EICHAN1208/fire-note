@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   resources :articles do
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :stocks, only: [:index, :create, :destroy]
   end

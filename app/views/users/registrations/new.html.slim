@@ -1,29 +1,29 @@
-.box-container.text-center
-  h2 新規登録
+.label.text-white.text-center.bg-danger.w-25
+  h1 FIREノート
 
+.box-container.text-center.mt-5
+  h2 fireノートへようこそ!
+
+.col-sm-6.mx-auto
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
 
-    .field
-      = f.text_field :name, autofocus: true
+    .form-group.text-center.mt-5
+      = f.text_field :name, autofocus: true, class: 'form-control', placeholder: 'ユーザー名'
 
-    .field
-      = f.label :email
+    .form-group.text-center
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス'
+    .form-group.text-center
+      / - if @minimum_password_length
+      /   em
+      /     | (
+      /     = @minimum_password_length
+      /     |  characters minimum)
+      / br
+      = f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'パスワード(6文字以上)'
+    .form-group.text-center
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: '確認用パスワード'
+    .form-group.text-center
+      = render "users/shared/links"
       br
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    .field
-      = f.label :password
-      - if @minimum_password_length
-        em
-          | (
-          = @minimum_password_length
-          |  characters minimum)
-      br
-      = f.password_field :password, autocomplete: "new-password"
-    .field
-      = f.label :password_confirmation
-      br
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .actions
-      = f.submit "新規登録"
-  = render "users/shared/links"
+      = f.submit "新規登録", class: "btn btn-danger btn-lg"
