@@ -16,7 +16,8 @@
 
 h1 Articles#show
 = link_to user_path(@article.user) do
-  = image_tag @article.user.avatar.thumb.url, class: ''
+  .circle-avatar
+    = image_tag @article.user.avatar.thumb.url
   = link_to @article.user.name, user_path(@article.user)
 - if @article.user == current_user
   = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article)
@@ -25,12 +26,17 @@ h1 Articles#show
 
 h1 = @article.title
 h2 概要
+hr
 p = @article.summary
 h2 活動内容
+hr
 p = @article.content
 h2 Keep
+hr
 p = @article.good_point
 h2 Ploblem
+hr
 p = @article.problem
 h2 Try
+hr
 p = @article.try

@@ -11,21 +11,27 @@ html
   body
     .bg-danger
       header
-        .container
+        .container.border
           nav.navbar.navbar-expand
-            .navbar-brand.mr-auto
-              = link_to "fireノート", "/articles", class: "text-white"
-            ul.navbar-nav
+            .navbar-brand.mr-auto.font-weight-bold.border
+              = link_to "FIREノート", "/articles", class: "text-white"
+            ul.navbar-nav.border
               - if current_user
                 li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
                 li.nav-item = link_to 'ストック一覧', "/articles", class: 'nav-link text-white'
                 li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
-    .text-center
-      .notice = notice
-      .alert = alert
+      .text-center
+        .notice = notice
+        .alert = alert
 
-    .container.fullheight
+      .container.fullheight.pb-5.border
 
-      = yield
+        = yield
+
+    .footer.border
+      .container
+        .footer-label.mt-4
+          h2.font-weight-bold  FIRE ノート
+          p Copyright (c)  All Rights Reserved
