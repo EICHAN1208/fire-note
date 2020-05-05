@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_articles, through: :favorites, source: :article
   # has_many :stocks
-  # has_many :comments
+  has_many :comments
 end

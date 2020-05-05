@@ -14,7 +14,6 @@
 
 
 
-h1 Articles#show
 = link_to user_path(@article.user) do
   .circle-avatar
     = image_tag @article.user.avatar.thumb.url
@@ -40,3 +39,16 @@ p = @article.problem
 h2 Try
 hr
 p = @article.try
+
+
+h2 コメント一覧
+- @comments.each do |c|
+  div
+    a href="/users/#{@article.user.id}" = c.user.name
+    = c.body
+    p = link_to "削除", article_comment_path(c.article.id, c.id), method: :delete
+    hr/
+= form_for [@article, @comment] do |f|
+  = f.text_field :body
+  br/
+  = f.submit 'コメントする'
