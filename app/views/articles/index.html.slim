@@ -1,7 +1,14 @@
-h1 記事一覧
+.search.border
+  = search_form_for @q do |f|
+    / = f.label :name, "Keyword"
+    = f.search_field :title_cont
+    = f.submit "検索"
 
-- if @articles.present?
-  - @articles.each do |article|
-    p = link_to article.title, article_path(article)
-- else
-  p 記事が1つもありません。
+.article-list.border
+  h1 記事一覧
+
+  - if @articles.present?
+    - @articles.each do |article|
+      p = link_to article.title, article_path(article)
+  - else
+    p 記事が1つもありません。

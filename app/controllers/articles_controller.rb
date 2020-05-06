@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.includes(:user).order(created_at: :desc)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   def show
@@ -16,7 +18,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     if @article.save
-      redirect_to article_path, notice: "記事を投稿しました！"
+      redirect_to article_path(@article), notice: "記事を投稿しました！"
     else
       render :new
     end
