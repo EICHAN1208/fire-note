@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      article: 記事
+      user: ユーザ
+    attributes:
+      article:
+        id: ID
+        title: タイトル
+        type: 属性
+        summary: 概要
+        content: 活動内容
+        good_point: keep
+        problem: problem
+        try: try
+        name: 名前

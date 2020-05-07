@@ -5,6 +5,10 @@ p Find me in app/views/articles/edit.html.slim
   .form-group
     = f.label "タイトル"
     = f.text_field :title, class: 'form-control', id: 'task_name'
+  / .form-group
+  /   = f.label "種別"
+  /   = f.select :type, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
+  /   include_blank: "選択して下さい"
   .form-group
     = f.label "概要"
     = f.text_area :summary, rows: 3, class: 'form-control', id: ''

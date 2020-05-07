@@ -1,65 +1,68 @@
 
-  h2
-    | Edit
-    = resource_name.to_s.humanize
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = render "devise/shared/error_messages", resource: resource
+  / h2
+  /   | Edit
+  /   = resource_name.to_s.humanize
+  .label.text-white.text-center.bg-danger.w-25
+    h1 FIREノート
 
-    .field
-      = f.label :名前
-      br
-      = f.text_field :name, autofocus: true
-    .field
-      = f.label :email
-      br
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      div
-        | Currently waiting confirmation for:
-        = resource.unconfirmed_email
-    .field
-      = f.label :所属する消防
-      br
-      = f.text_field :organization, autofocus: true
-    .circle-avatar
-      - if current_user.persisted? && current_user.avatar?
-        = image_tag current_user.avatar.to_s
-        label
-          = f.check_box :remove_avatar
-          | 画像を削除
-      - else
-        = image_tag 'no_avatar.png'
-        = f.hidden_field :avatar_cache
-      = f.file_field :avatar
-    .field
-      = f.label :password
-      i
-        | (変更しない場合は空白のままにします)
-      br
-      = f.password_field :password, autocomplete: "new-password"
-      - if @minimum_password_length
+  .col-sm-6.mx-auto
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      .form-group.mt-5
+        = f.label :名前
         br
-        em
-          = @minimum_password_length
-          |  文字以上入力
-    .field
-      = f.label :password_confirmation
-      br
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .field
-      = f.label :current_password
-      i
-        | (変更するには現在のパスワードが必要です)
-      br
-      = f.password_field :current_password, autocomplete: "current-password"
+        = f.text_field :name, autofocus: true, class: 'form-control'
+      .form-group.mt-2
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        div
+          | Currently waiting confirmation for:
+          = resource.unconfirmed_email
+      .form-group.mt-2
+        = f.label :所属する消防
+        br
+        = f.text_field :organization, autofocus: true, class: 'form-control'
+      .circle-avatar.mt-2.border
+        - if current_user.persisted? && current_user.avatar?
+          = image_tag current_user.avatar.to_s
+          label
+            = f.check_box :remove_avatar
+            | 画像を削除
+        - else
+          = image_tag 'no_avatar.png'
+          = f.hidden_field :avatar_cache
+        = f.file_field :avatar
+      .form-group.mt-2
+        = f.label :password
+        i
+          | (変更しない場合は空白のままにします)
+        br
+        = f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: '6文字以上'
+        / - if @minimum_password_length
+        /   br
+        /   em
+        /     = @minimum_password_length
+        /     |  文字以上入力
+      .form-group
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
+      .form-group.mt-4
+        = f.label :current_password
+        i
+          | (変更するには現在のパスワードが必要です)
+        br
+        = f.password_field :current_password, autocomplete: "current-password", class: 'form-control'
 
 
 
-    .actions
-      = f.submit "Update"
-  h3
-    | Cancel my account
-  p
-    | Unhappy?
-    = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-  = link_to "Back", :back
+      .actions
+        = f.submit "更新する", class: "btn btn-danger btn-lg"
+
+
+
+    p  = button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "削除します。よろしいですか？" }, method: :delete, class: "btn btn-danger btn-lg"
+    = link_to "Back", :back

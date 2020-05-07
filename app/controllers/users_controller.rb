@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update
+      redirect_to user_path(@user), notice: ""
+    else
+      render :edit
+    end
   end
 
 

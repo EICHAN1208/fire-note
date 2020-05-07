@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_many :favorites
   has_many :favorite_articles, through: :favorites, source: :article
   # has_many :stocks
