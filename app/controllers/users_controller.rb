@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.order("created_at DESC")
@@ -12,10 +16,20 @@ class UsersController < ApplicationController
 
   def update
     if @user.update
-      redirect_to user_path(@user), notice: ""
+      redirect_to user_path(@user)
     else
       render :edit
     end
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
 

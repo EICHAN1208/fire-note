@@ -3,24 +3,24 @@
   .form-group
     = f.label "タイトル"
     = f.text_field :title, class: 'form-control', id: 'task_name'
-  / .form-group
-  /   = f.label "種別"
-  /   = f.select :type, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
-  /   include_blank: "選択して下さい"
+  .form-group
+    = f.label "種別"
+    = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
+    include_blank: "選択して下さい"
   .form-group
     = f.label "概要"
-    = f.text_area :summary, rows: 3, class: 'form-control', id: ''
+    = f.text_area :summary, rows: 3, class: 'form-control'
   .form-group
     = f.label "活動内容"
-    = f.text_area :content, rows: 5, class: 'form-control', id: ''
+    = f.text_area :content, rows: 5, class: 'form-control'
   .form-group
     = f.label "Keep(良かったこと)"
-    = f.text_area :good_point, rows: 5, class: 'form-control', id: ''
+    = f.text_area :good_point, rows: 5, class: 'form-control'
   .form-group
     = f.label "Ploblem(悪かったこと)"
-    = f.text_area :problem, rows: 5, class: 'form-control', id: ''
+    = f.text_area :problem, rows: 5, class: 'form-control'
   .form-group
     = f.label "Try(次にやること)"
-    = f.text_area :try, rows: 5, class: 'form-control', id: ''
+    = f.text_area :try, rows: 5, class: 'form-control'
 
   =f.submit "投稿する", class: 'btn btn-default text-danger'

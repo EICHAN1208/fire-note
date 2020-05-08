@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_100432) do
+ActiveRecord::Schema.define(version: 2020_05_08_075104) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_100432) do
 
   create_table "articles", force: :cascade do |t|
     t.text "title"
-    t.string "type"
     t.text "summary"
     t.text "content"
     t.text "good_point"
@@ -44,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_100432) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 2020_05_05_100432) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
