@@ -15,5 +15,5 @@ class Article < ApplicationRecord
   validates :content, presence: true, length: { maximum: 50 }
   validates :good_point, presence: true, length: { maximum: 50 }
   validates :problem, presence: true, length: { maximum: 50 }
-  validates :try, presence: true, length: { maximum: 50 }
+  validates :challenge, presence: true, length: { maximum: 50 }
 end
