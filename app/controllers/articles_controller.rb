@@ -3,8 +3,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.includes(:user).order(created_at: :desc)
-    @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true)
   end
 
   def show

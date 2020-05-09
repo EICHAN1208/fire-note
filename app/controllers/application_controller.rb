@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_search
 
   # ログイン済ユーザーのみにアクセスを許可する
   before_action :authenticate_user!
@@ -10,6 +11,11 @@ class ApplicationController < ActionController::Base
   # ログイン後の遷移先を変更
   def after_sign_in_path_for(resource)
     user_path(resource)
+  end
+
+  def set_search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   protected

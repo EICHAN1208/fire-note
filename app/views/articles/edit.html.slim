@@ -11,18 +11,18 @@ p Find me in app/views/articles/edit.html.slim
     include_blank: "選択して下さい"
   .form-group
     = f.label "概要"
-    = f.text_area :summary, rows: 3, class: 'form-control', id: ''
+    = f.text_area :summary, rows: 3, class: 'form-control'
   .form-group
     = f.label "活動内容"
-    = f.text_area :content, rows: 5, class: 'form-control', id: ''
+    = f.text_area :content, rows: 5, class: 'form-control'
   .form-group
     = f.label "Keep(良かったこと)"
-    = f.text_area :good_point, rows: 5, class: 'form-control', id: ''
+    = f.text_area :good_point, rows: 5, class: 'form-control'
   .form-group
     = f.label "Ploblem(悪かったこと)"
-    = f.text_area :problem, rows: 5, class: 'form-control', id: ''
+    = f.text_area :problem, rows: 5, class: 'form-control'
   .form-group
     = f.label "Try(次にやること)"
-    = f.text_area :challenge, rows: 5, class: 'form-control', id: ''
+    = f.text_area :challenge, rows: 5, class: 'form-control'
 
   =f.submit "更新する", class: 'btn btn-default text-danger'

@@ -13,8 +13,12 @@ html
       header
         .container.border
           nav.navbar.navbar-expand
-            .navbar-brand.mr-auto.font-weight-bold.border
+            .navbar-brand.font-weight-bold.border
               = link_to "FIREノート", "/articles", class: "text-white"
+            .navbar-nav.mr-auto
+              = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
+                = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'
+                = f.submit "検索", class: 'btn btn-outline-default my-2 my-sm-0'
             ul.navbar-nav.border
               - if current_user
                 li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
