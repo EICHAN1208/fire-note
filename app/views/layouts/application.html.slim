@@ -9,8 +9,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    .bg-danger
-      header
+    .bg-white
+      header.bg-danger.text-white
         .container.border
           nav.navbar.navbar-expand
             .navbar-brand.font-weight-bold.border
@@ -25,6 +25,7 @@ html
                 li.nav-item = link_to 'ストック一覧', "/articles", class: 'nav-link text-white'
                 li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-white'
                 li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
+                = image_tag current_user.avatar.thumb.url, class: 'navigation__icon'
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
       .text-center
@@ -35,7 +36,7 @@ html
 
         = yield
 
-    .footer.border
+    .footer.bg-danger.text-white.border
       .container
         .footer-label.mt-4
           h2.font-weight-bold  FIRE ノート

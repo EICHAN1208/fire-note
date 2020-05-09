@@ -1,12 +1,31 @@
-h1 Users#follows
-p Find me in app/views/users/follows.html.erb
-- @users.each do |user|
-  hr/
-  p
-    span email:
-    = link_to user.email, user_path(user.id)
-  - if current_user != user
-    - if user.followed_by?(current_user)
-      p= link_to "フォロー済み", user_relationships_path(user.id), method: :delete
-    - else
-      p= link_to "フォローする", user_relationships_path(user.id), method: :post
+
+.follow.d-flex.justify-content-around
+  .user-info.bg-danger.text-white.border
+    = image_tag current_user.avatar.thumb.url
+    = current_user.name
+    = current_user.articles.count
+    = current_user.followings.count
+    = current_user.followers.count
+    = link_to 'ユーザー情報編集', edit_user_registration_path
+
+  .follow-list.bg-danger.text-white.border
+    h3 フォロー一覧
+    - @users.each do |user|
+      hr/
+      .follow-list-section.d-flex.justify-content-start.border
+        .circle-avatar.ml-3.border
+          = image_tag user.avatar.thumb.url
+        .follow-info.pt-2.ml-3.border
+          .follow-info-name.border
+            = link_to user.name, user_path(user.id)
+          .follow-info-email.border
+            span メール:
+            = user.email
+          .follow-info-article.border
+            span 記事投稿数:
+            = user.articles.count
+  / - if current_user != user
+  /   - if user.followed_by?(current_user)
+  /     p= link_to "フォロー済み", user_relationships_path(user.id), method: :delete
+  /   - else
+  /     p= link_to "フォローする", user_relationships_path(user.id), method: :post

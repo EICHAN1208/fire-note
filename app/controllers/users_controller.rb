@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   def follows
     user = User.find(params[:id])
-    binding.pry
     @users = user.followings
   end
 
