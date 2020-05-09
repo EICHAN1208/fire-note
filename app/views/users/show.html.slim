@@ -32,3 +32,10 @@ p= link_to "フォロワー", followers_user_path(@user.id)
   p
     span お気に入り記事タイトル:
     = link_to article.title, article_path(article.id)
+
+
+- @stock_articles.each do |article|
+  hr/
+  p
+    span ストック記事タイトル:
+    = link_to article.title, article_path(article.id)
