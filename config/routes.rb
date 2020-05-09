@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'relationships/create'
-  get 'relationships/destroy'
+  # get 'stocks/create'
+  # get 'stocks/destroy'
+  # get 'relationships/create'
+  # get 'relationships/destroy'
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   resources :articles do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    resources :stocks, only: [:index, :create, :destroy]
+    resource :stocks, only: [:index, :create, :destroy]
   end
 
   resources :users do
