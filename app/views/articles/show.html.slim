@@ -1,16 +1,5 @@
-- if user_signed_in?
-  - if @article.favorited_by?(current_user)
-    p
-      span お気に入り解除:
-      = link_to @article.favorites.count, article_favorites_path(@article.id), method: :delete
-  - else
-    p
-      span お気に入り登録:
-      = link_to @article.favorites.count, article_favorites_path(@article.id), method: :post
-- else
-  p
-    span お気に入り数:
-    = @article.favorites.count
+#favorite_buttons
+  = render 'favorite_action', article: @article
 
 
 - if user_signed_in?
