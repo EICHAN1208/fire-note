@@ -22,7 +22,7 @@ html
             ul.navbar-nav.border
               - if current_user
                 li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
-                li.nav-item = link_to 'ストック一覧', "/articles", class: 'nav-link text-white'
+                li.nav-item = link_to 'ストック一覧', "users/#{current_user.id}", class: 'nav-link text-white'
                 li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-white'
                 li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
                 = image_tag current_user.avatar.thumb.url, class: 'navigation__icon'
