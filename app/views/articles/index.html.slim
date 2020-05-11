@@ -22,8 +22,8 @@
     .user-info-edit.my-5.text-center
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
 
-  .article-list.bg-white.px-3.ml-5.py-3.w-75.rounded
-    h3 記事一覧
+  .article-list.bg-white.px-3.py-3.ml-5.w-75.rounded
+    h4 みんなの記事一覧
 
     - if @articles.present?
       - @articles.each do |article|
@@ -31,7 +31,7 @@
         .top-article-section.d-flex.justify-content-start
           p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
           .top-article-section-right.ml-3.mt-3.mb-0
-            p.mb-0 = link_to article.title, article_path(article), class: 'text-dark'
+            p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
             .contributor
               p.mb-0.font-weight-light.text-secondary
                 span 投稿者：
