@@ -34,17 +34,22 @@ body {
 .circle-avatar img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  // border-radius: 50%;
   object-fit: cover;
 }
 //フォロー一覧
 .user-info {
   width: 300px;
-  height: 515px;
+  height: 540px;
 }
 
 .follow-list {
   width: 500px;
+}
+
+//トップ画面
+.contributor {
+  font-size: 12px;
 }
 
 // footer---------------------

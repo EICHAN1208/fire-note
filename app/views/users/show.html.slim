@@ -22,23 +22,24 @@ p= link_to "フォロワー", followers_user_path(@user.id)
   = @user.name
   | さんの投稿一覧
 
-
-- @articles.each do |article|
-  hr
-  p =link_to article.title, article_path(article.id)
-
-
-
-
-- @favorite_articles.each do |article|
-  hr/
-  p
-    span お気に入り記事タイトル:
-    = link_to article.title, article_path(article.id)
-
-
-- @stock_articles.each do |article|
-  hr/
-  p
-    span ストック記事タイトル:
-    = link_to article.title, article_path(article.id)
+- if current_user.id == @user.id
+  ul.nav.nav-tabs
+    li.nav-item
+      a.nav-link.active data-toggle="tab" href="#your_articles"  あなたの記事
+    li.nav-item
+      a.nav-link data-toggle="tab" href="#stock_articles"  ストック記事
+    li.nav-item
+      a.nav-link data-toggle="tab" href="#favorite_articles"  お気に入り記事
+  .tab-content.py-4
+    #your_articles.tab-pane.active
+      - @articles.each do |article|
+        hr =link_to article.title, article_path(article.id)
+    #stock_articles.tab-pane
+      - @stock_articles.each do |article|
+        hr = link_to article.title, article_path(article.id)
+    #favorite_articles.tab-pane
+      - @favorite_articles.each do |article|
+        hr = link_to article.title, article_path(article.id)
+- else
+  - @articles.each do |article|
+    hr =link_to article.title, article_path(article.id)

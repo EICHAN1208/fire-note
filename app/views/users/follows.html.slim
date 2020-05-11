@@ -1,40 +1,35 @@
 
 .follow.d-flex.justify-content-around
-  .user-info.bg-danger.text-white.border
-    .user-info-image.text-center.my-3.border
+  .user-info.bg-danger.text-white.rounded.border
+    .user-info-image.text-center.my-3
       = image_tag current_user.avatar.thumb.url
-    .user-info-name.text-center.border
+    .user-info-name.text-center
       = current_user.name
-    .user-info-article.my-5.text-center.border
+    .user-info-article.my-5.text-center
       p.my-0 記事数
       = current_user.articles.count
-    .user-info-following.my-5.text-center.border
+    .user-info-following.my-5.text-center
       p.my-0 フォロー数
       = current_user.followings.count
-    .user-info-follower.my-5.text-center.border
+    .user-info-follower.my-5.text-center
       p.my-0 フォロワー数
       = current_user.followers.count
-    .user-info-edit.my-5.text-center.border
+    .user-info-edit.my-5.text-center
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
 
-  .follow-list.bg-danger.text-white.border
-    h3 フォロー一覧
+  .follow-list.bg-white.py-3.px-3.rounded
+    h3 フォロー
     - @users.each do |user|
       hr
-      .follow-list-section.my-3.d-flex.justify-content-start.border
-        .circle-avatar.ml-3.border
-          = image_tag user.avatar.thumb.url
-        .follow-info.pt-2.ml-3.border
-          .follow-info-name.border
-            = link_to user.name, user_path(user.id)
-          .follow-info-email.border
-            span メール:
-            = user.email
-          .follow-info-article.border
+      .follow-list-section.my-3.d-flex.justify-content-start.align-items-center
+        .circle-avatar.ml-3
+          = image_tag user.avatar.thumb.url, class: 'rounded'
+        .follow-info.ml-3
+          .follow-info-name
+            = link_to user.name, user_path(user.id), class: 'text-dark'
+          .follow-info-article.text-secondary
             span 記事投稿数:
             = user.articles.count
-  / - if current_user != user
-  /   - if user.followed_by?(current_user)
-  /     p= link_to "フォロー済み", user_relationships_path(user.id), method: :delete
-  /   - else
-  /     p= link_to "フォローする", user_relationships_path(user.id), method: :post
+        .follow-btn.ml-5.mt-2
+          div id="follow_button_#{user.id}"
+            = render 'follow_action', user: user

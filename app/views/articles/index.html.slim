@@ -1,13 +1,40 @@
-.search.border
-  = search_form_for @q do |f|
-    = f.search_field :title_cont
-    = f.submit "検索"
+/ .search
+/   = search_form_for @q do |f|
+/     = f.search_field :title_cont
+/     = f.submit "検索"
 
-.article-list.border
-  h1 記事一覧
 
-  - if @articles.present?
-    - @articles.each do |article|
-      p = link_to article.title, article_path(article)
-  - else
-    p 記事が1つもありません。
+.follow.d-flex.justify-content-start
+  .user-info.bg-danger.text-white.border.rounded
+    .user-info-image.text-center.my-3.rounded
+      = image_tag current_user.avatar.thumb.url
+    .user-info-name.text-center
+      = current_user.name
+    .user-info-article.my-5.text-center
+      p.my-0 記事数
+      = current_user.articles.count
+    .user-info-following.my-5.text-center
+      p.my-0 フォロー数
+      = current_user.followings.count
+    .user-info-follower.my-5.text-center
+      p.my-0 フォロワー数
+      = current_user.followers.count
+    .user-info-edit.my-5.text-center
+      = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
+
+  .article-list.bg-white.px-3.ml-5.py-3.w-75.rounded
+    h3 記事一覧
+
+    - if @articles.present?
+      - @articles.each do |article|
+        hr
+        .top-article-section.d-flex.justify-content-start
+          p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+          .top-article-section-right.ml-3.mt-3.mb-0
+            p.mb-0 = link_to article.title, article_path(article), class: 'text-dark'
+            .contributor
+              p.mb-0.font-weight-light.text-secondary
+                span 投稿者：
+                = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+    - else
+      p 記事が1つもありません。

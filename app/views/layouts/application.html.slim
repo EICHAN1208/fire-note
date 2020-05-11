@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    .bg-white
+    .bg-danger
       header.bg-danger.text-white
         .container.border
           nav.navbar.navbar-expand
@@ -18,14 +18,13 @@ html
             .navbar-nav.mr-auto
               = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
                 = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'
-                = f.submit "検索", class: 'btn btn-outline-default my-2 my-sm-0'
+                = f.submit "検索", class: 'btn btn-danger border ml-2'
             ul.navbar-nav.border
               - if current_user
                 li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
-                li.nav-item = link_to 'ストック一覧', "users/#{current_user.id}", class: 'nav-link text-white'
                 li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-white'
                 li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
-                = image_tag current_user.avatar.thumb.url, class: 'navigation__icon'
+                = image_tag current_user.avatar.thumb.url, class: 'navigation__icon rounded'
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
       .text-center
@@ -36,7 +35,7 @@ html
 
         = yield
 
-    .footer.bg-danger.text-white.border
+    .footer.text-danger
       .container
         .footer-label.mt-4
           h2.font-weight-bold  FIRE ノート

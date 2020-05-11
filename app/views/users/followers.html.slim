@@ -1,10 +1,35 @@
-h1 Users#followers
-p Find me in app/views/users/followers.html.erb
-- @users.each do |user|
-  hr/
-  p
-    span email:
-    = link_to user.email, user_path(user.id)
 
-  div id="follow_button_#{user.id}"
-    = render 'follow_action', user: user
+.follow.d-flex.justify-content-around
+  .user-info.bg-danger.text-white.rounded.border
+    .user-info-image.text-center.my-3
+      = image_tag current_user.avatar.thumb.url
+    .user-info-name.text-center
+      = current_user.name
+    .user-info-article.my-5.text-center
+      p.my-0 記事数
+      = current_user.articles.count
+    .user-info-following.my-5.text-center
+      p.my-0 フォロー数
+      = current_user.followings.count
+    .user-info-follower.my-5.text-center
+      p.my-0 フォロワー数
+      = current_user.followers.count
+    .user-info-edit.my-5.text-center
+      = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
+
+  .follow-list.bg-white.py-3.px-3.rounded
+    h3 フォロワー
+    - @users.each do |user|
+      hr
+      .follow-list-section.my-3.d-flex.justify-content-start.align-items-center
+        .circle-avatar.ml-3
+          = image_tag user.avatar.thumb.url, class: 'rounded'
+        .follow-info.ml-3
+          .follow-info-name
+            = link_to user.name, user_path(user.id), class: 'text-dark'
+          .follow-info-article.text-secondary
+            span 記事投稿数:
+            = user.articles.count
+        .follow-btn.ml-5.mt-2
+          div id="follow_button_#{user.id}"
+            = render 'follow_action', user: user
