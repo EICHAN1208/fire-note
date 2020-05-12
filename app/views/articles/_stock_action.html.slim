@@ -1,12 +1,8 @@
 - if user_signed_in?
   - if article.stocked_by?(current_user)
-    p
-      span ストック解除:
-      = link_to article.stocks.count, article_stocks_path(article.id), method: :delete, remote: true
+    p = link_to icon('fas', 'clipboard-check'), article_stocks_path(article.id), method: :delete, remote: true, class: 'clipboard-check-icon'
   - else
-    p
-      span ストックする:
-      = link_to article.stocks.count, article_stocks_path(article.id), method: :post, remote: true
+    p = link_to icon('fas', 'clipboard'), article_stocks_path(article.id), method: :post, remote: true, class: 'clipboard-icon'
 - else
   p
     span ストック数:

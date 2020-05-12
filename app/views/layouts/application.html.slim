@@ -14,7 +14,7 @@ html
         .container.border
           nav.navbar.navbar-expand
             .navbar-brand.font-weight-bold.border
-              = link_to "FIREノート", "/articles", class: "text-white"
+              = link_to "FIREノート", "/articles", class: "text-white navbar-brand"
             .navbar-nav.mr-auto
               = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
                 = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'

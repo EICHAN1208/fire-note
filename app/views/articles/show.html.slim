@@ -1,47 +1,52 @@
-#favorite_buttons
-  = render 'favorite_action', article: @article
 
-#stock_buttons
-  = render 'stock_action', article: @article
+.article-show.d-flex.justify-content-start
+  .icons.ml-5.border
+    #favorite_buttons
+      = render 'favorite_action', article: @article
 
+    #stock_buttons.text-center
+      = render 'stock_action', article: @article
 
-= link_to user_path(@article.user) do
-  .circle-avatar
-    = image_tag @article.user.avatar.thumb.url
-  = link_to @article.user.name, user_path(@article.user)
-- if @article.user == current_user
-  = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article)
-  = link_to icon('fas', 'trash-alt', '削除する'), article_path(@article), method: :delete,
-                                                  data: { confirm: "削除してもよろしいですか？" }
+  .article-content.bg-white.px-3.py-3.ml-5.w-75.rounded.border
+    = link_to user_path(@article.user) do
+      = image_tag @article.user.avatar.thumb.url, class: 'navigation__icon mr-3 rounded'
+      = link_to @article.user.name, user_path(@article.user), class: 'text-dark'
+    .edit-delete.text-right
+      - if @article.user == current_user
+        = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article), class: 'pencil-alt-icon'
+        = link_to icon('fas', 'trash-alt', '削除する'), article_path(@article), method: :delete,
+                                                        data: { confirm: "削除してもよろしいですか？" }, class: 'trash-alt-icon'
+    .contents.py-3
+      h2 = @article.title
+      p.text-secondary
+        span 種別：
+        = @article.kind
+      hr
+      h4 概要
+      hr
+      p = @article.summary
+      h4 活動内容
+      hr
+      p = @article.content
+      h4 Keep
+      hr
+      p = @article.good_point
+      h4 Ploblem
+      hr
+      p = @article.problem
+      h4 Try
+      hr
+      p = @article.challenge
 
-h1 = @article.title
-p = @article.kind
-hr
-h2 概要
-hr
-p = @article.summary
-h2 活動内容
-hr
-p = @article.content
-h2 Keep
-hr
-p = @article.good_point
-h2 Ploblem
-hr
-p = @article.problem
-h2 Try
-hr
-p = @article.challenge
-
-
-h2 コメント一覧
-- @comments.each do |c|
-  div
-    a href="/users/#{@article.user.id}" = c.user.name
-    = c.body
-    p = link_to "削除", article_comment_path(c.article.id, c.id), method: :delete
-    hr/
-= form_for [@article, @comment] do |f|
-  = f.text_field :body
-  br/
-  = f.submit 'コメントする'
+    .comments
+      h2 コメント一覧
+      - @comments.each do |c|
+        div
+          a href="/users/#{@article.user.id}" = c.user.name
+          = c.body
+          p = link_to icon('fas', 'trash-alt', '削除する'), article_comment_path(c.article.id, c.id), method: :delete
+          hr/
+      = form_for [@article, @comment] do |f|
+        = f.text_field :body
+        br/
+        = f.submit 'コメントする'
