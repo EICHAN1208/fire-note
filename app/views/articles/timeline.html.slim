@@ -1,0 +1,14 @@
+
+.timeline-list.bg-white.px-3.py-3.mx-auto.w-75.rounded
+  - if @feed_items.present?
+    - @feed_items.each do |feed_item|
+      hr
+      .timeline-section.d-flex.justify-content-start
+        p.mt-3 = image_tag feed_item.user.avatar.thumb.url, class: 'navigation__icon rounded'
+        .timeline-section-right.pt-3.pl-3
+          p.mb-0.font-weight-light.text-secondary
+            = link_to feed_item.user.name, user_path(feed_item.user), class: 'text-secondary'
+            span さんが記事を投稿しました。
+          p.mb-0 = link_to feed_item.title, article_path(feed_item), class: 'text-dark font-weight-bold'
+  - else
+    p 記事が1つもありません。

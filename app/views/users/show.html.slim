@@ -4,8 +4,8 @@
 
 .user-show-page.d-flex.justify-content-start
   .user-info.bg-danger.text-white.border.rounded
-    .user-info-image.text-center.my-3.rounded
-      = image_tag @user.avatar.thumb.url
+    .user-info-image.text-center.my-3
+      = image_tag @user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
       = @user.name
     .user-info-article.my-5.text-center
@@ -19,21 +19,13 @@
       = @user.followers.count
     - if current_user.id == @user.id
       .user-info-edit.my-5.text-center
+        = link_to 'タイムラインをみる', timeline_path,class: 'btn btn-danger border'
+      .user-info-edit.my-5.text-center
         = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
     - else
       #follow_button.text-center
         = render 'follow_action', user: @user
 
-
-  / .my-page.bg-white
-  /   .circle-avatar
-  /     - if current_user.persisted? && current_user.avatar?
-  /       = image_tag current_user.avatar.to_s
-  /     - else
-  /       = image_tag 'no_avatar.png'
-  /     span
-  /     = @user.name
-  /     | さんの投稿一覧
   .bg-white.py-3.px-3.ml-5.w-75.rounded
     - if current_user.id == @user.id
       ul.nav.nav-tabs

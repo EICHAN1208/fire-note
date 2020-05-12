@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :sign_in_required, only: [:index]
 
+  def timeline
+    if user_signed_in?
+      @feed_items = current_user.feed.order("created_at DESC")
+    end
+  end
+
   def index
     @articles = Article.includes(:user).order(created_at: :desc)
     @q = Article.ransack(params[:q])

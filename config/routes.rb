@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   root 'top#index'
-
+  get '/timeline', to:'articles#timeline'
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]
