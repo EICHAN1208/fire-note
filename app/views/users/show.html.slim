@@ -3,27 +3,27 @@
 
 
 .user-show-page.d-flex.justify-content-start
-  .user-info.bg-danger.text-white.border.rounded
+  .user-info.bg-danger.text-white.border.rounded.sticky-top
     .user-info-image.text-center.my-3
       = image_tag @user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
       = @user.name
-    .user-info-article.my-5.text-center
+    .user-info-article.py-3.text-center
       p.my-0 記事数
       = @user.articles.count
-    .user-info-following.my-5.text-center
+    .user-info-following.py-3.text-center
       p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-white'
       = @user.followings.count
-    .user-info-follower.my-5.text-center
+    .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
       = @user.followers.count
     - if current_user.id == @user.id
-      .user-info-edit.my-5.text-center
+      .user-info-edit.text-center.py-3
         = link_to 'タイムラインをみる', timeline_path,class: 'btn btn-danger border'
-      .user-info-edit.my-5.text-center
+      .user-info-edit.text-center.py-3
         = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
     - else
-      #follow_button.text-center
+      #follow_button.text-center.pt-5.mt-5
         = render 'follow_action', user: @user
 
   .bg-white.py-3.px-3.ml-5.w-75.rounded
@@ -42,7 +42,7 @@
             - @articles.each do |article|
               hr =link_to article.title, article_path(article.id), class: 'text-dark font-weight-bold'
           - else
-            p 記事が1つもありません。
+            p 記事がありません。
 
         #stock_articles.tab-pane
           - if @stock_articles.present?
@@ -57,7 +57,7 @@
                       span 投稿者：
                       = link_to article.user.name, user_path(article.user), class: 'text-secondary'
           - else
-            p 記事が1つもありません。
+            p 記事がありません。
 
         #favorite_articles.tab-pane
           - if @favorite_articles.present?
@@ -72,8 +72,15 @@
                       span 投稿者：
                       = link_to article.user.name, user_path(article.user), class: 'text-secondary'
           - else
-            p 記事が1つもありません。
+            p 記事がありません。
 
     - else
-      - @articles.each do |article|
-        hr =link_to article.title, article_path(article.id)
+      p.font-weight-bold
+        = @user.name
+        span さんの記事
+      hr
+      - if @articles.present?
+        - @articles.each do |article|
+          hr =link_to article.title, article_path(article.id),class: 'text-dark font-weight-bold'
+      -else
+        p 記事がありません。

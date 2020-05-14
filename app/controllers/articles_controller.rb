@@ -8,9 +8,9 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.includes(:user).order(created_at: :desc)
+    @articles = Article.includes(:user).order("created_at DESC")
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true)
+    @articles = @q.result(distinct: true).order("created_at DESC")
   end
 
   def show
