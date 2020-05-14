@@ -6,8 +6,8 @@
 
 .follow.d-flex.justify-content-start
   .user-info.bg-danger.text-white.border.rounded
-    .user-info-image.text-center.my-3.rounded
-      = image_tag current_user.avatar.thumb.url
+    .user-info-image.text-center.my-3
+      = image_tag current_user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
       = current_user.name
     .user-info-article.my-5.text-center

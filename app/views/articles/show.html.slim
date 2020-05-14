@@ -18,25 +18,31 @@
                                                         data: { confirm: "削除してもよろしいですか？" }, class: 'trash-alt-icon'
     .contents.py-3
       h2 = @article.title
-      p.text-secondary
+      p.text-secondary.text-right
         span 種別：
         = @article.kind
       hr
-      h4 概要
-      hr
-      p = @article.summary
+      h4.mb-0 概要
+      hr.my-0
+      .text-wrap.pt-1.pb-3
+        = @article.summary
+
       h4 活動内容
-      hr
-      p = @article.content
+      hr.my-0
+      .text-wrap.pt-1.pb-3
+        = @article.content
       h4 Keep
-      hr
-      p = @article.good_point
+      hr.my-0
+      .text-wrap.pt-1.pb-3
+        = @article.good_point
       h4 Ploblem
-      hr
-      p = @article.problem
+      hr.my-0
+      .text-wrap.pt-1.pb-3
+        = @article.problem
       h4 Try
-      hr
-      p = @article.challenge
+      hr.my-0
+      .text-wrap.pt-1.pb-3
+        = @article.challenge
 
     .comments
       h2 コメント一覧

@@ -35,32 +35,45 @@
           a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#stock_articles"  ストック記事
         li.nav-item
           a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#favorite_articles"  お気に入り記事
+
       .tab-content.py-4
         #your_articles.tab-pane.active
-          - @articles.each do |article|
-            hr =link_to article.title, article_path(article.id), class: 'text-dark font-weight-bold'
+          - if @articles.present?
+            - @articles.each do |article|
+              hr =link_to article.title, article_path(article.id), class: 'text-dark font-weight-bold'
+          - else
+            p 記事が1つもありません。
+
         #stock_articles.tab-pane
-          - @stock_articles.each do |article|
-            hr
-            .top-article-section.d-flex.justify-content-start
-              p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
-              .top-article-section-right.ml-3.mt-3.mb-0
-                p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
-                .contributor
-                  p.mb-0.font-weight-light.text-secondary
-                    span 投稿者：
-                    = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+          - if @stock_articles.present?
+            - @stock_articles.each do |article|
+              hr
+              .top-article-section.d-flex.justify-content-start
+                p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+                .top-article-section-right.ml-3.mt-3.mb-0
+                  p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+                  .contributor
+                    p.mb-0.font-weight-light.text-secondary
+                      span 投稿者：
+                      = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+          - else
+            p 記事が1つもありません。
+
         #favorite_articles.tab-pane
-          - @favorite_articles.each do |article|
-            hr
-            .top-article-section.d-flex.justify-content-start
-              p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
-              .top-article-section-right.ml-3.mt-3.mb-0
-                p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
-                .contributor
-                  p.mb-0.font-weight-light.text-secondary
-                    span 投稿者：
-                    = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+          - if @favorite_articles.present?
+            - @favorite_articles.each do |article|
+              hr
+              .top-article-section.d-flex.justify-content-start
+                p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+                .top-article-section-right.ml-3.mt-3.mb-0
+                  p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+                  .contributor
+                    p.mb-0.font-weight-light.text-secondary
+                      span 投稿者：
+                      = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+          - else
+            p 記事が1つもありません。
+
     - else
       - @articles.each do |article|
         hr =link_to article.title, article_path(article.id)

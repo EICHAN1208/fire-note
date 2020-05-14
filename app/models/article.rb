@@ -14,10 +14,10 @@ class Article < ApplicationRecord
     stocks.where(user_id: user.id).exists?
   end
 
-  validates :title, presence: true, length: { maximum: 50 }
-  validates :summary, presence: true, length: { maximum: 50 }
-  validates :content, presence: true, length: { maximum: 50 }
-  validates :good_point, presence: true, length: { maximum: 50 }
-  validates :problem, presence: true, length: { maximum: 50 }
-  validates :challenge, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: { maximum: 48 }
+  validates :summary, presence: true
+  validates :content, presence: true
+  validates :good_point, presence: true
+  validates :problem, presence: true
+  validates :challenge, presence: true
 end
