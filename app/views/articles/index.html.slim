@@ -38,3 +38,5 @@
                 = link_to article.user.name, user_path(article.user), class: 'text-secondary'
     - else
       p 記事が1つもありません。
+    .pagination.border
+      = paginate @articles
