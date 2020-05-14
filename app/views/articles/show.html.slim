@@ -45,14 +45,19 @@
         = @article.challenge
 
     .comments
-      h2 コメント一覧
+      h4 コメント
       - @comments.each do |c|
-        div
-          a href="/users/#{@article.user.id}" = c.user.name
+        .comment-up-content.d-flex.justify-content-between
+          .left-side
+            = image_tag c.user.avatar.thumb.url, class: 'navigation__icon mr-3 rounded'
+            = link_to c.user.name, user_path(c.user), class: 'text-dark'
+          .right-side
+            = link_to icon('fas', 'trash-alt', '削除する'), article_comment_path(c.article.id, c.id), method: :delete, class: 'text-dark'
+        .comment-down-content
           = c.body
-          p = link_to icon('fas', 'trash-alt', '削除する'), article_comment_path(c.article.id, c.id), method: :delete
-          hr/
+          hr
       = form_for [@article, @comment] do |f|
-        = f.text_field :body
-        br/
-        = f.submit 'コメントする'
+        = f.text_area :body, rows: 3, class: 'form-control'
+        br
+        .text-right
+          = f.submit 'コメントする', class: 'btn btn-danger text-white'
