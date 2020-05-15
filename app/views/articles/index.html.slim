@@ -14,7 +14,9 @@
     .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: 'text-white'
       = current_user.followers.count
-    .user-info-edit.text-center.py-3
+    .user-list.text-center.py-3
+        = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
+    .user-info-timeline.text-center.py-3
         = link_to 'タイムラインをみる', timeline_path,class: 'btn btn-danger border'
     .user-info-edit.text-center.py-3
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'

@@ -2,19 +2,21 @@
 .follow.d-flex.justify-content-around
   .user-info.bg-danger.text-white.rounded.border.sticky-top
     .user-info-image.text-center.my-3
-      = image_tag current_user.avatar.thumb.url
+      = image_tag current_user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
       = current_user.name
-    .user-info-article.my-5.text-center
+    .user-info-article.py-3.text-center
       p.my-0 記事数
       = current_user.articles.count
-    .user-info-following.my-5.text-center
+    .user-info-following.py-3.text-center
       p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-white'
       = current_user.followings.count
-    .user-info-follower.my-5.text-center
+    .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
       = current_user.followers.count
-    .user-info-edit.my-5.text-center
+    .user-list.text-center.py-3
+        = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
+    .user-info-edit.text-center.py-3
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
 
   .follow-list.bg-white.py-3.px-3.rounded
