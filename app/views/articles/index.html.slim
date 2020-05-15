@@ -5,16 +5,18 @@
       = image_tag current_user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
       = current_user.name
-    .user-info-article.my-5.text-center
+    .user-info-article.py-3.text-center
       p.my-0 記事数
       = current_user.articles.count
-    .user-info-following.my-5.text-center
-      p.my-0 フォロー数
+    .user-info-following.py-3.text-center
+      p.my-0 = link_to "フォロー", follows_user_path(current_user.id), class: 'text-white'
       = current_user.followings.count
-    .user-info-follower.my-5.text-center
-      p.my-0 フォロワー数
+    .user-info-follower.py-3.text-center
+      p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: 'text-white'
       = current_user.followers.count
-    .user-info-edit.my-5.text-center
+    .user-info-edit.text-center.py-3
+        = link_to 'タイムラインをみる', timeline_path,class: 'btn btn-danger border'
+    .user-info-edit.text-center.py-3
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
 
   .article-list.bg-white.px-3.py-3.ml-5.w-75.rounded
