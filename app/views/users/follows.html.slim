@@ -9,16 +9,16 @@
       p.my-0 記事数
       = current_user.articles.count
     .user-info-following.my-5.text-center
-      p.my-0 フォロー数
+      p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-white'
       = current_user.followings.count
     .user-info-follower.my-5.text-center
-      p.my-0 フォロワー数
+      p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
       = current_user.followers.count
     .user-info-edit.my-5.text-center
       = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
 
   .follow-list.bg-white.py-3.px-3.rounded
-    h3 フォロー
+    h4 フォロー
     - if @users.present?
       - @users.each do |user|
         hr

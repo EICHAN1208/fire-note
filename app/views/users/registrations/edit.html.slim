@@ -25,27 +25,25 @@
         = f.label :所属する消防
         br
         = f.text_field :organization, autofocus: true, class: 'form-control'
-      .circle-avatar.mt-2.border
+      .circle-avatar.py-2.text-center
         - if current_user.persisted? && current_user.avatar?
-          = image_tag current_user.avatar.to_s
+          .edit-image
+            = image_tag current_user.avatar.to_s, class: 'rounded'
           label
-            = f.check_box :remove_avatar
-            | 画像を削除
+            .edit-check
+              = f.check_box :remove_avatar
+              | 画像を削除
         - else
           = image_tag 'no_avatar.png'
           = f.hidden_field :avatar_cache
-        = f.file_field :avatar
+        .edit-file-field.text-cneter.pl-5.pt-2
+          = f.file_field :avatar
       .form-group.mt-2
         = f.label :password
         i
           | (変更しない場合は空白のままにします)
         br
         = f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: '6文字以上'
-        / - if @minimum_password_length
-        /   br
-        /   em
-        /     = @minimum_password_length
-        /     |  文字以上入力
       .form-group
         = f.label :password_confirmation
         br
@@ -59,10 +57,10 @@
 
 
 
-      .actions
-        = f.submit "更新する", class: "btn btn-danger btn-lg"
+      .edit-actions.text-center
+        = f.submit "更新する", class: "btn btn-danger"
 
 
-
-    p  = button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "削除します。よろしいですか？" }, method: :delete, class: "btn btn-danger btn-lg"
-    = link_to "Back", :back
+      .edit-btns.text-center.pt-4
+        p = button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "削除します。よろしいですか？" }, method: :delete, class: "btn btn-danger"
+        p = link_to "Back", :back, class: 'btn btn-danger'
