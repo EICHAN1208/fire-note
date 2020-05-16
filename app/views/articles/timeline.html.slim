@@ -12,6 +12,8 @@
           p.mb-0 = link_to feed_item.title, article_path(feed_item), class: 'text-dark font-weight-bold'
   - else
     p 記事が1つもありません。
+  .pagi
+    = paginate @feed_items
 
 .timeline-to-mypage.text-center.pt-4
   = link_to 'マイページへ戻る', "/users/#{current_user.id}", class: 'btn btn-danger border'

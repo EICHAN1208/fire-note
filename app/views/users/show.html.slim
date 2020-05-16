@@ -42,6 +42,8 @@
               hr =link_to article.title, article_path(article.id), class: 'text-dark font-weight-bold'
           - else
             p 記事がありません。
+          .pagi
+            = paginate @articles
 
         #stock_articles.tab-pane
           - if @stock_articles.present?
@@ -57,6 +59,8 @@
                       = link_to article.user.name, user_path(article.user), class: 'text-secondary'
           - else
             p 記事がありません。
+          .pagi
+            = paginate @stock_articles
 
         #favorite_articles.tab-pane
           - if @favorite_articles.present?
@@ -72,6 +76,8 @@
                       = link_to article.user.name, user_path(article.user), class: 'text-secondary'
           - else
             p 記事がありません。
+          .pagi
+            = paginate @favorite_articles
 
     - else
       p.font-weight-bold
@@ -83,3 +89,5 @@
           hr =link_to article.title, article_path(article.id),class: 'text-dark font-weight-bold'
       -else
         p 記事がありません。
+      .pagi
+        = paginate @articles

@@ -3,12 +3,12 @@ class ArticlesController < ApplicationController
 
   def timeline
     if user_signed_in?
-      @feed_items = current_user.feed.order("created_at DESC")
+      @feed_items = current_user.feed.order("created_at DESC").page(params[:page]).per(20)
     end
   end
 
   def index
-    @articles = Article.includes(:user).order("created_at DESC")
+    # @articles = Article.includes(:user).order("created_at DESC")
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(20)
   end

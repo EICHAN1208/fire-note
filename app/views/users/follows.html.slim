@@ -2,18 +2,18 @@
 .follow.d-flex.justify-content-around
   .user-info.bg-danger.text-white.rounded.border.sticky-top
     .user-info-image.text-center.my-3
-      = image_tag current_user.avatar.thumb.url, class: 'rounded'
+      = image_tag @user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
-      = current_user.name
+      = link_to @user.name, "/users/#{@user.id}",class: 'text-white'
     .user-info-article.py-3.text-center
       p.my-0 記事数
-      = current_user.articles.count
+      = @user.articles.count
     .user-info-following.py-3.text-center
       p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-white'
-      = current_user.followings.count
+      = @user.followings.count
     .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
-      = current_user.followers.count
+      = @user.followers.count
     .user-list.text-center.py-3
         = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
     .user-info-edit.text-center.py-3
@@ -39,3 +39,5 @@
               = render 'follow_action', user: user
     - else
       p フォローしているユーザーはいません。
+    .pagi
+        = paginate @users

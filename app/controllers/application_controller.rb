@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン後の遷移先を変更
   def after_sign_in_path_for(resource)
-    user_path(resource)
+    articles_path(resource)
   end
 
   def set_search

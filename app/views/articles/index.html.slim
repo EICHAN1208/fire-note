@@ -4,7 +4,7 @@
     .user-info-image.text-center.my-3
       = image_tag current_user.avatar.thumb.url, class: 'rounded'
     .user-info-name.text-center
-      = current_user.name
+      = link_to current_user.name, "/users/#{current_user.id}",class: 'text-white'
     .user-info-article.py-3.text-center
       p.my-0 記事数
       = current_user.articles.count
