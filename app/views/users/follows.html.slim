@@ -14,10 +14,14 @@
     .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
       = @user.followers.count
-    .user-list.text-center.py-3
-        = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
-    .user-info-edit.text-center.py-3
-      = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
+    - if current_user.id == @user.id
+      .user-list.text-center.py-3
+          = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
+      .user-info-edit.text-center.py-3
+        = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger border'
+    - else
+      #follow_button.text-center.pt-5.mt-5
+        = render 'follow_action', user: @user
 
   .follow-list.bg-white.py-3.px-3.rounded
     h4 フォロー

@@ -27,14 +27,19 @@
     - if @articles.present?
       - @articles.each do |article|
         hr
-        .top-article-section.d-flex.justify-content-start
-          p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
-          .top-article-section-right.ml-3.mt-3.mb-0
-            p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
-            .contributor
+        .top-article-section.d-flex.justify-content-between
+          .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
+            p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+            .contributor.pt-3.pl-3
+              p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
               p.mb-0.font-weight-light.text-secondary
                 span 投稿者：
                 = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+          .favorite-mark-count.pt-2.pr-2
+            .favorite-mark.text-danger
+              = icon('fas', 'heart')
+            .favorite-count.text-center
+              = article.favorites.count
     - else
       p 記事が1つもありません。
     .pagi
