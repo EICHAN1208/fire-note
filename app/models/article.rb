@@ -15,9 +15,10 @@ class Article < ApplicationRecord
   end
 
   validates :title, presence: true, length: { maximum: 48 }
+  validates :kind, presence: true
   validates :summary, presence: true
   validates :content, presence: true
-  validates :good_point, presence: true
-  validates :problem, presence: true
-  validates :challenge, presence: true
+  # validates :good_point, presence: true
+  # validates :problem, presence: true
+  # validates :challenge, presence: true
 end
