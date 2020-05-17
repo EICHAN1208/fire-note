@@ -1,7 +1,8 @@
 = form_with model: @article, local: true do |f|
   = render 'layouts/error_messages', model: f.object
   .form-group
-    = f.text_field :title, class: 'form-control', placeholder: 'タイトル'
+    = f.label "タイトル"
+    = f.text_field :title, class: 'form-control'
   .form-group
     = f.label "種別"
     = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
