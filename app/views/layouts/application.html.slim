@@ -9,8 +9,10 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    .bg-danger
-      header.bg-danger.text-white
+    .text-center.mb-0
+      = render partial: 'layouts/flash'
+    .page
+      header.mb-5.bg-danger
         .container.border
           nav.navbar.navbar-expand
             .navbar-brand.font-weight-bold.border
@@ -27,15 +29,12 @@ html
                 = image_tag current_user.avatar.thumb.url, class: 'navigation__icon rounded'
               - else
                 li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
-      .text-center
-        .notice = notice
-        .alert = alert
 
       .container.fullheight.pb-5.border
 
         = yield
 
-    .footer.text-danger
+    .footer.text-white.bg-danger
       .container
         .footer-label.mt-4
           h2.font-weight-bold  FIRE ノート

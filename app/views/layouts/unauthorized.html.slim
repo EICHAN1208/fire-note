@@ -10,8 +10,6 @@ html
 
   body
     .text-center
-      / p.notice.mb-0 = notice
-      / p.alert.mb-0 = alert
+      = render partial: 'layouts/flash'
     .container.fullheight.mt-5
-
       = yield

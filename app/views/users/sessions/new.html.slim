@@ -6,7 +6,6 @@
 
 .col-sm-6.mx-auto
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = render "users/shared/error_messages", resource: resource
     .form-group.text-center.mt-5
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス'
     .form-group.text-center

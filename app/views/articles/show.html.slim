@@ -30,13 +30,12 @@
       hr.my-0
       .text-wrap.pt-1.pb-3
         = @article.content
+
     - if @article.good_point.present?
       h4 Keep
       hr.my-0
       .text-wrap.pt-1.pb-3
         = @article.good_point
-    - else
-      p あ
       h4 Ploblem
       hr.my-0
       .text-wrap.pt-1.pb-3

@@ -7,6 +7,7 @@ ja:
       article:
         id: ID
         title: タイトル
+        kind: 種別
         type: 属性
         summary: 概要
         content: 活動内容
