@@ -1,8 +1,12 @@
 - if user_signed_in?
   - if article.favorited_by?(current_user)
-    p = link_to icon('fas', 'heart'), article_favorites_path(article.id), method: :delete, remote: true, class: 'heart-icon'
+    p.mb-0 = link_to icon('fas', 'heart'), article_favorites_path(article.id), method: :delete, remote: true, class: 'heart-icon '
+    .favorite-count.text-center.pb-3
+      = article.favorites.count
   - else
-    p = link_to icon('fas', 'heart-broken'),article_favorites_path(article.id), method: :post, remote: true, class: 'heart-broken-icon'
+    p.mb-0 = link_to icon('fas', 'heart-broken'),article_favorites_path(article.id), method: :post, remote: true, class: 'heart-broken-icon'
+    .favorite-count.text-center.pb-3
+      = article.favorites.count
 - else
   p
     span お気に入り数:
