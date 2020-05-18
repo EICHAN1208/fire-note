@@ -14,11 +14,14 @@ class Article < ApplicationRecord
     stocks.where(user_id: user.id).exists?
   end
 
+  #いいね順をつくるために作成
+  ransacker :favorites_count do
+    query = '(SELECT COUNT(favorites.article_id) FROM favorites where favorites.article_id = articles.id GROUP BY favorites.article_id)'
+    Arel.sql(query)
+  end
+
   validates :title, presence: true, length: { maximum: 48 }
   validates :kind, presence: true
   validates :summary, presence: true
   validates :content, presence: true
-  # validates :good_point, presence: true
-  # validates :problem, presence: true
-  # validates :challenge, presence: true
 end

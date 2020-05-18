@@ -1,21 +1,39 @@
 .wrapper
-  .container.mx-auto
-    nav.navbar-nav.navbar-expand.justify-content-end.border
-      ul.navbar-nav
-        li.nav-item.mr-3
-          a.nav-link = link_to 'ログイン', "/users/sign_in"
-        li.nav-item.mr-3
-          a.nav-link = link_to '新規登録', "/users/sign_up"
+  .bg-mask
+    .container.mx-auto
 
-    .text-box.text-center.border
-      h2.top_text.font-weight-bold
-        | Fire ノート
-      br
-      p.top_text
-        | 経験をかたちにする。
+      /  = link_to 'ログイン', "/users/sign_in"
+      /  = link_to '新規登録', "/users/sign_up"
 
-.middle-wrapper
+      .text-box.text-center.border
+        h1.top_text.font-weight-bold
+          | Fire ノート
+        br
+        p.top_text.font-weight-bold
+          | 経験をかたちにする。
 
+.container
+  .middle-wrapper
+    .middle-wrapper-label.text-center.py-5.border
+      h1.font-weight-bold.text-danger 何ができるか？
+    .middle-wrapper-content.d-flex.justify-content-between.pb-5.border
+      .content-left.border
+        .article-post
+          h2.font-weight-bold.text-center.py-4 記事の投稿
+        .text-center
+          = image_tag 'post.png', :size => '150x150', class: 'my-5'
+        h5.p-4 自身が経験したことを記事にして、ふりかえることができます。効率的にふりかえりをすることができるように記事のフォーマットはKPT方式を採用しました。
+      .content-center.border
+        h2.font-weight-bold.text-center.py-4 ストック・お気に入り
+        .text-center
+          = image_tag 'stock.png', :size => '150x150', class: 'my-5'
+          = image_tag 'favorite.png', :size => '50x50', class: 'my-5'
+        h5.p-4 あとで見返したい記事をストックしたり、お気に入りの記事にいいねをすることができます。
+      .content-right.border
+        h2.font-weight-bold.text-center.py-4 フォロー
+        .text-center
+          = image_tag 'follow.png', :size => '150x150', class: 'my-5'
+        h5.p-4 チェックしておきたいユーザーをフォローすることができ、フォローしたユーザーのタイムラインを見ることができます。
 
 
 

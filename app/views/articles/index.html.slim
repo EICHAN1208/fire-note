@@ -14,16 +14,17 @@
     .user-info-follower.py-3.text-center
       p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: 'text-white'
       = current_user.followers.count
-    .user-list.text-center.py-3
-        = link_to 'ユーザー一覧', users_path, class: 'btn btn-danger border'
     .user-info-timeline.text-center.py-3
         = link_to 'タイムラインをみる', timeline_path, class: 'btn btn-light text-danger w-75'
     .user-info-edit.text-center.py-3
-      = link_to 'ユーザー情報編集', edit_user_registration_path, class: 'btn btn-light text-danger w-75'
+      = link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-light text-danger w-75'
 
   .article-list.bg-white.px-3.py-3.ml-5.w-75.rounded
-    h4 みんなの記事一覧
-
+    .d-flex.justify-content-between
+      .article-list-title.bg-danger.w-25.text-center.text-white
+        h4.mb-0.py-2 記事一覧
+      .favorite-order.border
+        = sort_link(@q, :favorites_count, "いいね順")
     - if @articles.present?
       - @articles.each do |article|
         hr
