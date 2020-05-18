@@ -1,16 +1,15 @@
 .wrapper
   .bg-mask
     .container.mx-auto
-
-      /  = link_to 'ログイン', "/users/sign_in"
-      /  = link_to '新規登録', "/users/sign_up"
-
-      .text-box.text-center.border
+      .text-box.text-center
         h1.top_text.font-weight-bold
           | Fire ノート
         br
         p.top_text.font-weight-bold
           | 経験をかたちにする。
+      .btn-box.text-center.d-flex.flex-column
+        div  = link_to 'ログイン', "/users/sign_in", class: 'btn btn-danger w-25 my-2'
+        div  = link_to '新規登録', "/users/sign_up", class: 'btn btn-danger w-25 my-2'
 
 .container
   .middle-wrapper
