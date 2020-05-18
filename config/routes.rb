@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  # get 'stocks/create'
-  # get 'stocks/destroy'
-  # get 'relationships/create'
-  # get 'relationships/destroy'
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'

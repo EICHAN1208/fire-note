@@ -17,4 +17,6 @@
     .form-group.text-center
       = render "users/shared/links"
       br
-      = f.submit "ログイン", class: "btn btn-danger btn-lg"
+      = f.submit "ログイン", class: "btn btn-danger w-50"
+  .text-center
+    = link_to 'トップへ戻る', root_path, class: 'btn btn-danger w-50'
