@@ -1,24 +1,26 @@
-# README
+## fire ノート
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+fire ノートは、消防職員が災害現場で経験したことを記事にし、共有できるサービスです。
 
-Things you may want to cover:
+- ターゲット
+  現役の消防職員
 
-* Ruby version
+- 解決したい課題
+  個人の経験値には限りがあり、多様化する災害現場においてはこれが弱みになるため、それぞれのユーザーが経験したことを共有して、この課題を解決したい。
 
-* System dependencies
+消防職員間で経験を共有することにより、次に自分が遭遇した災害現場で活かすことができる。また経験の少ない若手職員の育成に役立てられる。また経験したことのふりかえりができる。
 
-* Configuration
+## 機能一覧
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+新規登録／ログイン機能
+記事の投稿・一覧表示・編集・削除
+記事検索機能
+ソート機能（いいね順）
+タイムライン(フォローしたユーザーが投稿した記事一覧を表示)
+画像アップロード(ユーザーのプロフィール)
+ページネーション機能
+コメント機能
+いいね機能
+ストック機能
+フォロー/フォロワー機能
+テスト(RSpec)
