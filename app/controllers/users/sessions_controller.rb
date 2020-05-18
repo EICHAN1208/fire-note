@@ -2,6 +2,12 @@
 
 class Users::SessionsController < Devise::SessionsController
   layout 'unauthorized'
+
+  def new_guest
+    user = User.guest
+    sign_in user
+    redirect_to articles_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

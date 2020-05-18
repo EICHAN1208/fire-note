@@ -2,7 +2,13 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'unauthorized'
+  before_action :check_guest, only: %i[update destroy]
 
+  def check_guest
+    if resource.email == 'guest@example.com'
+      redirect_to articles_path, alert: 'ゲストユーザーの編集・削除できません。'
+    end
+  end
 
   #アカウント更新後の遷移先を指定
   protected

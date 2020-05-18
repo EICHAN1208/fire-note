@@ -30,5 +30,11 @@ class User < ApplicationRecord
                   OR user_id = :user_id", user_id: id)
   end
 
+  def self.guest
+    find_or_create_by!(name: 'テストファイヤーマン', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   validates :name, presence: true, length: { maximum: 10 }
 end

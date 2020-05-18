@@ -28,12 +28,43 @@ body {
   padding-top: 400px;
 }
 
+.middle-wrapper-label {
+  position: relative;
+  padding: 0.25em 1em;
+}
+.middle-wrapper-label:before,
+.middle-wrapper-label:after {
+  content: "";
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  display: inline-block;
+}
+.middle-wrapper-label:before {
+  border-left: solid 1px #5767bf;
+  border-top: solid 1px #5767bf;
+  top: 0;
+  left: 0;
+}
+.middle-wrapper-label:after {
+  border-right: solid 1px #5767bf;
+  border-bottom: solid 1px #5767bf;
+  bottom: 0;
+  right: 0;
+}
+.middle-wrapper-label p {
+  margin: 0;
+  padding: 0;
+}
+
 .content-left {
   width: 350px;
 }
+
 .content-center {
   width: 350px;
 }
+
 .content-right {
   width: 350px;
 }
