@@ -1,6 +1,6 @@
 / 記事投稿が失敗したら表示
 - if model.errors.any?
-  .alert.alert-warning
+  .alert.alert-danger
     ul
       - model.errors.full_messages.each do |message|
         li= message

@@ -25,25 +25,25 @@
       h4.mb-0 概要
       hr.my-0
       .text-wrap.pt-1.pb-3
-        = @article.summary
+        = simple_format(@article.summary)
       h4 活動内容
       hr.my-0
       .text-wrap.pt-1.pb-3
-        = @article.content
+        = simple_format(@article.content)
 
     - if @article.good_point.present?
       h4 Keep
       hr.my-0
       .text-wrap.pt-1.pb-3
-        = @article.good_point
+        = simple_format(@article.good_point)
       h4 Ploblem
       hr.my-0
       .text-wrap.pt-1.pb-3
-        = @article.problem
+        = simple_format(@article.problem)
       h4 Try
       hr.my-0
       .text-wrap.pt-1.pb-3
-        = @article.challenge
+        = simple_format(@article.challenge)
 
     .comments
       h4 コメント
