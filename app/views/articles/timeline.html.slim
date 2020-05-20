@@ -3,17 +3,21 @@
   - if @feed_items.present?
     - @feed_items.each do |feed_item|
       hr
-      .timeline-section.d-flex.justify-content-start
-        p.mt-3 = image_tag feed_item.user.avatar.thumb.url, class: 'navigation__icon rounded'
-        .timeline-section-right.pt-3.pl-3
-          p.mb-0.font-weight-light.text-secondary
-            = link_to feed_item.user.name, user_path(feed_item.user), class: 'text-secondary'
-            span さんが記事を投稿しました。
-          p.mb-0 = link_to feed_item.title, article_path(feed_item), class: 'text-dark font-weight-bold'
+      .timeline-section.d-flex.justify-content-between
+        .timeline-section-left.pt-3.pl-3
+          .div.d-flex.flex-row
+            div = image_tag feed_item.user.avatar.thumb.url, class: 'navigation__icon rounded'
+            .div.ml-4
+              p.mb-0.font-weight-light.text-secondary
+                = link_to feed_item.user.name, user_path(feed_item.user), class: 'text-secondary'
+                span さんが記事を投稿しました。
+              p.mb-0 = link_to feed_item.title, article_path(feed_item), class: 'text-dark font-weight-bold'
+        .timeline-section-time.pt-3
+          = l feed_item.created_at, format: :short
   - else
     p 記事が1つもありません。
-  .pagi
+  .pagi.pt-3
     = paginate @feed_items
 
 .timeline-to-mypage.text-center.pt-4
-  = link_to 'マイページへ戻る', "/users/#{current_user.id}", class: 'btn btn-danger border'
+  = link_to 'マイページへ戻る', "/users/#{current_user.id}", class: 'btn btn-danger'

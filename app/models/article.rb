@@ -15,10 +15,10 @@ class Article < ApplicationRecord
   end
 
   #いいね順をつくるために作成
-  ransacker :favorites_count do
-    query = '(SELECT COUNT(favorites.article_id) FROM favorites where favorites.article_id = articles.id GROUP BY favorites.article_id)'
-    Arel.sql(query)
-  end
+  # ransacker :favorites_count do
+  #   query = '(SELECT COUNT(favorites.article_id) FROM favorites where favorites.article_id = articles.id GROUP BY favorites.article_id)'
+  #   Arel.sql(query)
+  # end
 
   validates :title, presence: true, length: { maximum: 48 }
   validates :kind, presence: true

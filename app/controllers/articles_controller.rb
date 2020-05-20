@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   def index
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(20)
+    @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').pluck(:article_id))
   end
 
   def show
