@@ -15,8 +15,6 @@
       p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-white'
       = @user.followers.count
     - if current_user.id == @user.id
-      .user-list.text-center.py-3
-        = link_to 'ユーザー一覧', users_path,class: 'btn btn-danger border'
       .user-info-edit.text-center.py-3
         = link_to 'タイムライン', timeline_path,class: 'btn btn-danger border'
       .user-info-edit.text-center.py-3
