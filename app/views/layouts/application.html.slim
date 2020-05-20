@@ -8,35 +8,34 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body
+  body.bg-light
     .text-center.mb-0
       = render partial: 'layouts/flash'
     .page
-      header.mb-5.bg-danger
+      header.mb-5
         .container.border
           nav.navbar.navbar-expand
             .navbar-brand.font-weight-bold.border
-              = link_to "FIREノート", "/articles", class: "text-white navbar-brand"
+              = image_tag 'fire.png', :size => '40x40', class: 'fire-icon border mb-2 mr-2'
+              = link_to "FIREノート", "/articles", class: "text-danger navbar-brand border"
             .navbar-nav.mr-auto
               = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
                 = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'
                 = f.submit "検索", class: 'btn btn-danger border ml-2'
             ul.navbar-nav.border
-              - if current_user
-                li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-white'
-                li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-white'
-                li.nav-item = link_to 'ユーザー一覧', users_path, class: 'nav-link text-white'
-                li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-white'
+                = image_tag 'pen.png', :size => '20x20', class: 'mt-2'
+                li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-dark font-weight-bold'
+                li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-dark font-weight-bold'
+                li.nav-item = link_to 'ユーザー一覧', users_path, class: 'nav-link text-dark font-weight-bold'
+                li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-dark font-weight-bold'
                 = image_tag current_user.avatar.thumb.url, class: 'navigation__icon rounded'
-              - else
-                li.nav-item = link_to 'ログイン', "/users/sign_in", class: 'nav-link text-white'
 
       .container.fullheight.pb-5.border
 
         = yield
 
-    .footer.text-white.bg-danger
+    .footer.bg-white.text-danger
       .container
         .footer-label.mt-4
-          h2.font-weight-bold  FIRE ノート
+          h3.font-weight-bold  FIRE ノート
           p Copyright (c)  All Rights Reserved

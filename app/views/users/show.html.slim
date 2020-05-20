@@ -2,7 +2,7 @@
 .user-show-page.d-flex.justify-content-start
   .user-info.bg-danger.text-white.border.rounded.sticky-top
     .user-info-image.text-center.my-3
-      = image_tag @user.avatar.thumb.url, class: 'rounded'
+      = image_tag @user.avatar.thumb.url, :size => '60x60', class: 'rounded'
     .user-info-name.text-center
       = @user.name
     .user-info-article.py-3.text-center

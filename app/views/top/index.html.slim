@@ -10,7 +10,7 @@
       .btn-box.text-center.d-flex.flex-column
         div = link_to 'ログイン', "/users/sign_in", class: 'btn btn-danger w-25 my-2'
         div = link_to '新規登録', "/users/sign_up", class: 'btn btn-danger w-25 my-2'
-        div = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-success w-25 my-2'
+        div = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-warning w-25 my-2'
 
 .container
   .middle-wrapper
@@ -38,7 +38,8 @@
 
 
 
-.footer.bg-danger.text-white
+.footer.bg-white.text-danger
+  hr
   .container
     .footer-label.mt-4
       h2.font-weight-bold  FIRE ノート
