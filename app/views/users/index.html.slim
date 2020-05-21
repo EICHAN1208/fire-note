@@ -1,15 +1,3 @@
-/ h1 Users#index
-/ p Find me in app/views/users/index.html.erb
-/ - @users.each do |user|
-/   hr/
-/   p
-/     span email:
-/     = link_to user.email, user_path(user.id)
-
-/   div id="follow_button_#{user.id}"
-/     = render 'follow_action', user: user
-
-
 
 .users.d-flex.justify-content-around
   .user-info.rounded.sticky-top
