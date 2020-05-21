@@ -4,15 +4,15 @@
     .user-info-image.text-center.my-3
       = image_tag current_user.avatar.thumb.url, :size => '60x60', class: 'rounded'
     .user-info-name.text-center
-      = link_to current_user.name, "/users/#{current_user.id}",class: ''
+      = link_to current_user.name, "/users/#{current_user.id}",class: 'text-dark font-weight-bold'
     .user-info-article.py-3.text-center
-      p.my-0 記事数
+      p.my-0.text-dark.font-weight-bold 記事数
       = current_user.articles.count
     .user-info-following.py-3.text-center
-      p.my-0 = link_to "フォロー", follows_user_path(current_user.id), class: ''
+      p.my-0 = link_to "フォロー", follows_user_path(current_user.id), class: 'text-dark font-weight-bold'
       = current_user.followings.count
     .user-info-follower.py-3.text-center
-      p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: ''
+      p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: 'text-dark font-weight-bold'
       = current_user.followers.count
     .user-info-timeline.text-center.py-3
         = link_to 'タイムラインをみる', timeline_path, class: 'btn btn-danger text-white w-75'

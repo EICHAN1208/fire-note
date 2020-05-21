@@ -2,26 +2,26 @@
   = render 'layouts/error_messages', model: f.object
   .form
     .form-group
-      = f.label "タイトル"
-      = f.text_field :title, class: 'form-control'
+      = f.label "タイトル", class: 'font-weight-bold'
+      = f.text_field :title, class: 'form-control', placeholder: '必須入力'
     .form-group
-      = f.label "種別"
+      = f.label "種別：", class: 'font-weight-bold'
       = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
       include_blank: "選択して下さい"
     .form-group
-      = f.label "概要"
-      = f.text_area :summary, rows: 3, class: 'form-control'
+      = f.label "概要", class: 'font-weight-bold'
+      = f.text_area :summary, rows: 3, class: 'form-control', placeholder: '必須入力'
     .form-group
-      = f.label "活動内容"
-      = f.text_area :content, rows: 5, class: 'form-control'
+      = f.label "活動内容", class: 'font-weight-bold'
+      = f.text_area :content, rows: 5, class: 'form-control', placeholder: '必須入力'
     .form-group
-      = f.label "Keep(良かったこと)"
+      = f.label "Keep(良かったこと)", class: 'font-weight-bold'
       = f.text_area :good_point, rows: 5, class: 'form-control'
     .form-group
-      = f.label "Ploblem(悪かったこと)"
+      = f.label "Ploblem(悪かったこと)", class: 'font-weight-bold'
       = f.text_area :problem, rows: 5, class: 'form-control'
     .form-group
-      = f.label "Try(次にやること)"
+      = f.label "Try(次にやること)", class: 'font-weight-bold'
       = f.text_area :challenge, rows: 5, class: 'form-control'
   .post-btn.text-center
-    =f.submit "投稿する", class: 'btn btn-danger text-white font-weight-bold border w-50'
+    =f.submit "投稿する", class: 'btn btn-danger text-white font-weight-bold border w-25'

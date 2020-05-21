@@ -3,24 +3,24 @@
   .user-info.rounded.sticky-top
     .user-info-image.text-center.my-3
       = image_tag @user.avatar.thumb.url, :size => '60x60', class: 'rounded'
-    .user-info-name.text-center
+    .user-info-name.text-center.text-dark.font-weight-bold
       = @user.name
     .user-info-article.py-3.text-center
-      p.my-0 記事数
+      p.my-0.text-dark.font-weight-bold 記事数
       = @user.articles.count
     .user-info-following.py-3.text-center
-      p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: ''
+      p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-dark font-weight-bold'
       = @user.followings.count
     .user-info-follower.py-3.text-center
-      p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: ''
+      p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-dark font-weight-bold'
       = @user.followers.count
     - if current_user.id == @user.id
       .user-info-edit.text-center.py-3
         = link_to 'タイムライン', timeline_path,class: 'btn btn-danger w-75'
       .user-info-edit.text-center.py-3
-        = link_to 'ユーザー情報編集', edit_user_registration_path,class: 'btn btn-danger w-75'
+        = link_to 'プロフィール編集', edit_user_registration_path,class: 'btn btn-danger w-75'
     - else
-      #follow_button.text-center.pt-5.mt-5
+      #follow_button.text-center.pt-5
         = render 'follow_action', user: @user
 
   .bg-white.py-3.px-3.w-75.rounded
