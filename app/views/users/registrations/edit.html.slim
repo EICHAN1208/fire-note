@@ -1,7 +1,5 @@
 
-  / h2
-  /   | Edit
-  /   = resource_name.to_s.humanize
+
   .label.text-white.text-center.bg-danger.w-25
     h1 FIREノート
 
@@ -21,10 +19,6 @@
         div
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
-      / .form-group.mt-2
-      /   = f.label :所属する消防
-      /   br
-      /   = f.text_field :organization, autofocus: true, class: 'form-control'
       .circle-avatar.py-2.text-center
         - if current_user.persisted? && current_user.avatar?
           .edit-image
