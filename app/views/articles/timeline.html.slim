@@ -15,7 +15,7 @@
         .timeline-section-time.pt-3
           = l feed_item.created_at, format: :short
   - else
-    p 記事が1つもありません。
+    p タイムラインは1つもありません。
   .pagi.pt-3
     = paginate @feed_items
 
