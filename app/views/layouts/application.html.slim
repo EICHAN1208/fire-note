@@ -32,13 +32,14 @@ html
                   .dropdown-menu aria-labelledby="dropdown1"
                     li.nav-item = link_to 'ユーザー一覧', users_path, class: 'nav-link text-dark font-weight-bold dropdown-item'
                     li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-dark font-weight-bold dropdown-item'
+          hr.my-0
 
 
       .container.fullheight.pb-5
 
         = yield
 
-    .footer.bg-white.text-danger
+    .footer.bg-secondary.text-white
       .container
         .footer-label.mt-4
           h3.font-weight-bold  FIRE ノート
