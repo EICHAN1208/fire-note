@@ -122,5 +122,5 @@
                   = article.favorites.count
         - else
           p 記事がありません。
-        / .pagi
-        /   = paginate @
+        .pagi
+          = paginate @all_ranks
