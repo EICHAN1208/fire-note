@@ -21,7 +21,7 @@ html
             .navbar-nav.mr-auto
               = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
                 = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'
-                = f.submit "検索", class: 'btn btn-danger ml-2'
+                = f.submit "記事検索", class: 'btn btn-danger ml-2'
             ul.navbar-nav
                 = image_tag 'pen.png', :size => '20x20', class: 'mt-3'
                 li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-dark font-weight-bold mt-2'
