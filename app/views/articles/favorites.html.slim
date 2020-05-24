@@ -1,0 +1,50 @@
+.follow.d-flex.justify-content-start
+  .user-info.rounded.sticky-top
+    .user-info-image.text-center.my-3
+      = image_tag current_user.avatar.thumb.url, :size => '60x60', class: 'rounded'
+    .user-info-name.text-center
+      = link_to current_user.name, "/users/#{current_user.id}",class: 'text-dark font-weight-bold'
+    .user-info-article.py-3.text-center
+      p.my-0.text-dark.font-weight-bold 記事数
+      = current_user.articles.count
+    .user-info-following.py-3.text-center
+      p.my-0 = link_to "フォロー", follows_user_path(current_user.id), class: 'text-dark font-weight-bold'
+      = current_user.followings.count
+    .user-info-follower.py-3.text-center
+      p.my-0 = link_to "フォロワー", followers_user_path(current_user.id), class: 'text-dark font-weight-bold'
+      = current_user.followers.count
+    .user-info-timeline.text-center.py-3
+        = link_to 'タイムラインをみる', timeline_path, class: 'btn btn-danger text-white w-75'
+    .user-info-edit.text-center.py-3
+      = link_to 'プロフィール編集', edit_user_registration_path, class: 'btn btn-danger text-white w-75'
+
+
+  .bg-white.py-3.px-3.w-75.rounded
+    ul.nav.nav-tabs
+      li.nav-item
+        = link_to '記事一覧', articles_path, class: 'text-dark font-weight-bold nav-link'
+      li.nav-item
+        a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#favorite_rank_articles"  いいね順に表示
+
+    .tab-content.py-4
+      #favorite_rank_articles.tab-pane.active
+        - if @all_ranks.present?
+          - @all_ranks.each do |article|
+            hr
+            .top-article-section.d-flex.justify-content-between
+              .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
+                p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+                .contributor.pt-3.pl-3
+                  p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+                  p.mb-0.font-weight-light.text-secondary
+                    span 投稿者：
+                    = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+              .favorite-mark-count.pt-2.pr-2
+                .favorite-mark.text-danger
+                  = icon('fas', 'heart')
+                .favorite-count.text-center
+                  = article.favorites.count
+        - else
+          p 記事がありません。
+        .pagi
+          = paginate @all_ranks

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root 'top#index'
   get '/timeline', to:'articles#timeline'
+  get '/favorites', to: 'articles#favorites'
 
 
   resources :articles do
