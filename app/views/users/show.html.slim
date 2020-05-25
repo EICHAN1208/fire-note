@@ -29,9 +29,9 @@
         li.nav-item
           a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#your_articles"  あなたの記事
         li.nav-item
-          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#stock_articles"  ストック記事
+          = link_to 'ストック一覧', stocks_user_path, class: 'text-dark font-weight-bold nav-link'
         li.nav-item
-          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#favorite_articles"  お気に入り記事
+          = link_to 'お気に入り一覧', favorites_user_path, class: 'text-dark font-weight-bold nav-link'
 
       .tab-content.py-4
         #your_articles.tab-pane.active
@@ -51,49 +51,49 @@
           .pagi
             = paginate @articles
 
-        #stock_articles.tab-pane
-          - if @stock_articles.present?
-            - @stock_articles.each do |article|
-              hr
-              .top-article-section.d-flex.justify-content-between
-                .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
-                  p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
-                  .contributor.pt-3.pl-3
-                    p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
-                    p.mb-0.font-weight-light.text-secondary
-                      span 投稿者：
-                      = link_to article.user.name, user_path(article.user), class: 'text-secondary'
-                .favorite-mark-count.pt-2.pr-2
-                  .favorite-mark.text-danger
-                    = icon('fas', 'heart')
-                  .favorite-count.text-center
-                    = article.favorites.count
-          - else
-            p 記事がありません。
-          .pagi
-            = paginate @stock_articles
+        / #stock_articles.tab-pane
+        /   - if @stock_articles.present?
+        /     - @stock_articles.each do |article|
+        /       hr
+        /       .top-article-section.d-flex.justify-content-between
+        /         .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
+        /           p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+        /           .contributor.pt-3.pl-3
+        /             p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+        /             p.mb-0.font-weight-light.text-secondary
+        /               span 投稿者：
+        /               = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+        /         .favorite-mark-count.pt-2.pr-2
+        /           .favorite-mark.text-danger
+        /             = icon('fas', 'heart')
+        /           .favorite-count.text-center
+        /             = article.favorites.count
+        /   - else
+        /     p 記事がありません。
+        /   .pagi
+        /     = paginate @stock_articles
 
-        #favorite_articles.tab-pane
-          - if @favorite_articles.present?
-            - @favorite_articles.each do |article|
-              hr
-              .top-article-section.d-flex.justify-content-between
-                .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
-                  p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
-                  .contributor.pt-3.pl-3
-                    p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
-                    p.mb-0.font-weight-light.text-secondary
-                      span 投稿者：
-                      = link_to article.user.name, user_path(article.user), class: 'text-secondary'
-                .favorite-mark-count.pt-2.pr-2
-                  .favorite-mark.text-danger
-                    = icon('fas', 'heart')
-                  .favorite-count.text-center
-                    = article.favorites.count
-          - else
-            p 記事がありません。
-          .pagi
-            = paginate @favorite_articles
+        / #favorite_articles.tab-pane
+        /   - if @favorite_articles.present?
+        /     - @favorite_articles.each do |article|
+        /       hr
+        /       .top-article-section.d-flex.justify-content-between
+        /         .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
+        /           p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+        /           .contributor.pt-3.pl-3
+        /             p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+        /             p.mb-0.font-weight-light.text-secondary
+        /               span 投稿者：
+        /               = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+        /         .favorite-mark-count.pt-2.pr-2
+        /           .favorite-mark.text-danger
+        /             = icon('fas', 'heart')
+        /           .favorite-count.text-center
+        /             = article.favorites.count
+        /   - else
+        /     p 記事がありません。
+        /   .pagi
+        /     = paginate @favorite_articles
 
     - else
       p.font-weight-bold

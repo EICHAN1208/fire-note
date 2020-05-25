@@ -27,11 +27,11 @@
     - if current_user.id == @user.id
       ul.nav.nav-tabs
         li.nav-item
-          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#your_articles"  あなたの記事
+          = link_to 'あなたの記事', user_path, class: 'text-dark font-weight-bold nav-link'
         li.nav-item
-          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#stock_articles"  ストック記事
+          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#stock_articles"  ストック記事
         li.nav-item
-          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#favorite_articles"  お気に入り記事
+          = link_to 'お気に入り一覧', favorites_user_path, class: 'text-dark font-weight-bold nav-link'
 
       .tab-content.py-4
         #stock_articles.tab-pane.active

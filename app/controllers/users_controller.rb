@@ -8,19 +8,21 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
-    @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
+    # @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
+    # @stock_articles = @user.stock_articles.order("created_at DESC").page(params[:page]).per(20)
+  end
+
+  def stocks
+    @user = User.find(params[:id])
+    @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
     @stock_articles = @user.stock_articles.order("created_at DESC").page(params[:page]).per(20)
   end
 
-  # def stocks
-  #   @user = User.find(params[:id])
-  #   @stock_articles = @user.stock_articles.order("created_at DESC").page(params[:page]).per(20)
-  # end
-
-  # def favorites
-  #   @user = User.find(params[:id])
-  #   @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
-  # end
+  def favorites
+    @user = User.find(params[:id])
+    @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
+    @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
+  end
 
   def edit
     @user = User.find(params[:id])
