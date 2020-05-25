@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/timeline', to:'articles#timeline'
   get '/favorites', to: 'articles#favorites'
 
+  # get '/users/stocks', to: 'users#stocks'
+  # get '/users/favorites', to: 'users#favorites'
+
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]

@@ -1,0 +1,78 @@
+
+.user-show-page.d-flex.justify-content-start
+  .user-info.rounded.sticky-top
+    .user-info-image.text-center.my-3
+      = image_tag @user.avatar.thumb.url, :size => '60x60', class: 'rounded'
+    .user-info-name.text-center.text-dark.font-weight-bold
+      = @user.name
+    .user-info-article.py-3.text-center
+      p.my-0.text-dark.font-weight-bold 記事数
+      = @user.articles.count
+    .user-info-following.py-3.text-center
+      p.my-0 = link_to "フォロー", follows_user_path(@user.id), class: 'text-dark font-weight-bold'
+      = @user.followings.count
+    .user-info-follower.py-3.text-center
+      p.my-0 = link_to "フォロワー", followers_user_path(@user.id), class: 'text-dark font-weight-bold'
+      = @user.followers.count
+    - if current_user.id == @user.id
+      .user-info-edit.text-center.py-3
+        = link_to 'タイムライン', timeline_path,class: 'btn btn-danger w-75'
+      .user-info-edit.text-center.py-3
+        = link_to 'プロフィール編集', edit_user_registration_path,class: 'btn btn-danger w-75'
+    - else
+      #follow_button.text-center.pt-5
+        = render 'follow_action', user: @user
+
+  .bg-white.py-3.px-3.w-75.rounded
+    - if current_user.id == @user.id
+      ul.nav.nav-tabs
+        li.nav-item
+          a.nav-link.text-dark.font-weight-bold.active data-toggle="tab" href="#your_articles"  あなたの記事
+        li.nav-item
+          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#stock_articles"  ストック記事
+        li.nav-item
+          a.nav-link.text-dark.font-weight-bold data-toggle="tab" href="#favorite_articles"  お気に入り記事
+
+      .tab-content.py-4
+        #stock_articles.tab-pane.active
+          - if @stock_articles.present?
+            - @stock_articles.each do |article|
+              hr
+              .top-article-section.d-flex.justify-content-between
+                .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
+                  p.mt-3 = image_tag article.user.avatar.thumb.url, class: 'navigation__icon rounded'
+                  .contributor.pt-3.pl-3
+                    p.mb-0 = link_to article.title, article_path(article), class: 'text-dark font-weight-bold'
+                    p.mb-0.font-weight-light.text-secondary
+                      span 投稿者：
+                      = link_to article.user.name, user_path(article.user), class: 'text-secondary'
+                .favorite-mark-count.pt-2.pr-2
+                  .favorite-mark.text-danger
+                    = icon('fas', 'heart')
+                  .favorite-count.text-center
+                    = article.favorites.count
+          - else
+            p 記事がありません。
+          .pagi
+            = paginate @stock_articles
+
+    - else
+      p.font-weight-bold
+        = @user.name
+        span さんの記事
+      hr
+      - if @articles.present?
+        - @articles.each do |article|
+          hr
+          .d-flex.justify-content-between
+            .article-title-only.pt-3.pl-2
+              = link_to article.title, article_path(article.id), class: 'text-dark font-weight-bold'
+            .favorite-mark-count.pr-2
+              .favorite-mark.text-danger
+                = icon('fas', 'heart')
+              .favorite-count.text-center
+                = article.favorites.count
+      -else
+        p 記事がありません。
+      .pagi
+        = paginate @articles
