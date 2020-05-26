@@ -6,7 +6,8 @@
       = f.label "タイトル", class: 'font-weight-bold'
       = f.text_field :title, class: 'form-control', placeholder: '必須入力'
     .form-group
-      = f.label "種別：", class: 'font-weight-bold'
+      = f.label "種別", class: 'font-weight-bold'
+      br
       = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
       include_blank: "選択して下さい"
     .form-group
