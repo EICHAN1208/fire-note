@@ -30,8 +30,8 @@ html
                   button#dropdown1.btn.btn-light.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
                     = image_tag current_user.avatar.thumb.url, class: 'navigation__icon rounded'
                   .dropdown-menu aria-labelledby="dropdown1"
-                    li.nav-item = link_to 'ユーザー一覧', users_path, class: 'nav-link text-dark font-weight-bold dropdown-item'
-                    li.nav-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-dark font-weight-bold dropdown-item'
+                    .dropdown-item = link_to 'ユーザー一覧', users_path, class: 'nav-link text-dark font-weight-bold'
+                    .dropdown-item = link_to 'ログアウト', "/users/sign_out", method: :delete, class: 'nav-link text-dark font-weight-bold'
           hr.my-0
 
 

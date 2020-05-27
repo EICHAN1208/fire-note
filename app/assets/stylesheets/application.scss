@@ -172,3 +172,7 @@ body {
 .users-list {
   width: 500px;
 }
+
+.dropdown-menu li:active {
+  color: red;
+}
