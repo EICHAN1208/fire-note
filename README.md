@@ -11,7 +11,7 @@ Fire ノートは、消防職員が災害現場で経験したことを記事に
 ## URL
 
 - AWS
-  [Fire ノート](http://www.fire-note.com/)
+  [Fire ノート](https://www.fire-note.com/)
 
 - Heroku
   [Fire ノート](https://fire-note.herokuapp.com/)
@@ -29,7 +29,7 @@ Fire ノートは、消防職員が災害現場で経験したことを記事に
 
 ### 本番環境
 
-- AWS (EC2・RDS・S3・Route53)
+- AWS (EC2・RDS・S3・ACM・Route53)
 - Unicorn
 - Nginx
 
