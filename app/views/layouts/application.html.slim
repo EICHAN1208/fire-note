@@ -27,7 +27,7 @@ html
               li.nav-item = link_to '投稿する', "/articles/new", class: 'nav-link text-dark font-weight-bold mt-2'
               li.nav-item = link_to 'マイページ', "/users/#{current_user.id}", class: 'nav-link text-dark font-weight-bold mt-2'
             .dropdown
-              button#dropdown1.btn.btn-light.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+              .button#dropdown1.btn.btn-light.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
                 = image_tag current_user.avatar.thumb.url, class: 'navigation__icon rounded'
               .dropdown-menu aria-labelledby="dropdown1"
                 li = link_to 'ユーザー一覧', users_path, class: 'text-dark font-weight-bold dropdown-item bg-light'
