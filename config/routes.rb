@@ -13,23 +13,19 @@ Rails.application.routes.draw do
   get '/timeline', to:'articles#timeline'
   get '/favorites', to: 'articles#favorites'
 
-  # get '/users/stocks', to: 'users#stocks'
-  # get '/users/favorites', to: 'users#favorites'
-
-
   resources :articles do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    resource :stocks, only: [:index, :create, :destroy]
+    resource :stocks, only: [:create, :destroy]
   end
 
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get :follows, on: :member
-    get :followers, on: :member
     member do
-    get :stocks
-    get :favorites
-  end
+      get :follows
+      get :followers
+      get :stocks
+      get :favorites
+    end
   end
 end
