@@ -177,3 +177,7 @@ body {
 .dropdown-menu li:active {
   color: red;
 }
+
+.page-link:focus {
+  box-shadow: none;
+}
