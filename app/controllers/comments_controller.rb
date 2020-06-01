@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     article = Article.find(params[:article_id])
     @comment = article.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.user = current_user
     if @comment.save
       redirect_back(fallback_location: root_path)
     else

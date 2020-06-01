@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    if @article.destroy!
+    if @article.destroy
       redirect_to articles_path, notice: "記事を削除しました！"
     else
       render :show
