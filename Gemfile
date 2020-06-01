@@ -25,12 +25,15 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'html2slim'
+  gem 'pry-rails'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'faker'
 end
 
 group :production do
@@ -39,11 +42,9 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
-gem 'html2slim'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'devise'
-gem 'omniauth-twitter'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'carrierwave'
@@ -52,7 +53,4 @@ gem 'rmagick'
 gem 'font-awesome-sass'
 gem 'ransack'
 gem 'rails-i18n'
-gem 'pry-rails'
 gem 'kaminari'
-gem 'js_cookie_rails'
-gem 'faker'
