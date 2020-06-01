@@ -6,7 +6,7 @@ class Article < ApplicationRecord
 
   #記事がファボしてあるかどうかの判定
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.where(user: user).exists?
   end
 
   #記事がストックしてあるかどうかの判定

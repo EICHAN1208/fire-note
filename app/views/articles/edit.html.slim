@@ -8,6 +8,7 @@
     .form-group
       = f.label "種別", class: 'font-weight-bold'
       br
+      - # Enumerize使いたい
       = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
       include_blank: "選択して下さい"
     .form-group

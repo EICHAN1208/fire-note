@@ -1,32 +1,28 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: %i[show stocks favoites edit follows followers]
 
   def index
-    @users = User.all.order("created_at DESC").page(params[:page]).per(20)
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
-    @user = User.find(params[:id])
     @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
     # @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
     # @stock_articles = @user.stock_articles.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def stocks
-    @user = User.find(params[:id])
     @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
     @stock_articles = @user.stock_articles.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def favorites
-    @user = User.find(params[:id])
     @articles = @user.articles.order("created_at DESC").page(params[:page]).per(20)
     @favorite_articles = @user.favorite_articles.order("created_at DESC").page(params[:page]).per(20)
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
     if @user.update
@@ -37,16 +33,17 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @user = User.find(params[:id])
-    user = User.find(params[:id])
-    @users = user.followings.page(params[:page]).per(200)
+    @users = @user.followings.page(params[:page]).per(200)
   end
 
   def followers
-    @user = User.find(params[:id])
-    user = User.find(params[:id])
-    @users = user.followers.page(params[:page]).per(200)
+    @users = @user.followers.page(params[:page]).per(200)
   end
 
 
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
