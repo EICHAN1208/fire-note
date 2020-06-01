@@ -14,6 +14,7 @@
               p.mb-0 = link_to feed_item.title, article_path(feed_item), class: 'text-dark font-weight-bold'
         .timeline-section-time.pt-3
           = l feed_item.created_at, format: :short
+    hr
   - else
     p タイムラインはありません。
   .pagi.pt-3
