@@ -24,10 +24,12 @@ class User < ApplicationRecord
   end
 
   def feed
-  following_ids = "SELECT follower_id FROM relationships
-                  WHERE following_id = :user_id"
-  Article.where("user_id IN (#{following_ids})
-                  OR user_id = :user_id", user_id: id)
+    # following_ids = "SELECT follower_id FROM relationships
+    #                 WHERE following_id = :user_id"
+    # Article.where("user_id IN (#{following_ids})
+    #                 OR user_id = :user_id", user_id: id)
+
+    Article.where(user: active_relationships.select(:follower_id)).or(articles)
   end
 
   def self.guest
