@@ -1,26 +1,45 @@
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
+
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
+
+# production:
+#   <<: *default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
+
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  host: <%= ENV.fetch('DATABASE_HOSTNAME', 'db') %>
+  database: fire-note
+  port: 3306
   timeout: 5000
+  charset: utf8
+  collation: utf8_unicode_ci
 
 development:
   <<: *default
-  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: fire-note_test
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-# development:
-#   adapter: mysql2
-#   encoding: utf8
-#   database: fire-note_development
-#   pool: 5
-#   username: root
-#   password:
-#   socket: /tmp/mysql.sock
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
