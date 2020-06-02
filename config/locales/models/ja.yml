@@ -3,6 +3,7 @@ ja:
     models:
       article: 記事
       user: ユーザ
+      comment: コメント
     attributes:
       article:
         id: ID
@@ -15,3 +16,5 @@ ja:
         problem: problem
         try: try
         name: 名前
+      comment:
+        body: コメント
