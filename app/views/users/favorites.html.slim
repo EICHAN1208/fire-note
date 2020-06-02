@@ -73,7 +73,7 @@
                 = icon('fas', 'heart')
               .favorite-count.text-center
                 = article.favorites.count
-      -else
+      - else
         p 記事がありません。
       .pagi
         = paginate @articles
