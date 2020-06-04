@@ -1,5 +1,7 @@
 ## Fire ノート 🚒
 
+![Uploading スクリーンショット 2020-06-05 00.05.30.png…]()
+
 Fire ノートは、消防職員が災害現場で経験したことを記事にし、共有できるサービスです。✨
 
 - 個人の経験値には限りがあり、多様化する災害現場においてはこれが弱みになるため、それぞれのユーザーが経験したことを共有して、この課題を解決したい。という想いから現役の消防職員向けに作りました。
@@ -11,21 +13,27 @@ Fire ノートは、消防職員が災害現場で経験したことを記事に
 ## URL
 
 - AWS
-  [Fire ノート](https://www.fire-note.com/)
+  https://www.fire-note.com/
 
 - Heroku
-  [Fire ノート](https://fire-note.herokuapp.com/)
+  https://fire-note.herokuapp.com/
 
 ## 技術スタック
 
 ### 言語・フレームワーク
 
-- Ruby 2.5.1
+- Ruby 2.5.8
 - Rails 5.2.4
 
 ### 開発環境
 
-- SQLite
+- docker
+- MySQL
+
+### テスト環境
+
+- RSpec
+- CircleCI(自動テスト)
 
 ### 本番環境
 
