@@ -13,9 +13,9 @@
       = link_to @article.user.name, user_path(@article.user), class: 'text-dark'
     .edit-delete.text-right
       - if @article.user == current_user
-        = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article), class: 'pencil-alt-icon'
+        = link_to icon('fas', 'pencil-alt', '編集する'), edit_article_path(@article), class: 'pencil-alt-icon mx-2'
         = link_to icon('fas', 'trash-alt', '削除する'), article_path(@article), method: :delete,
-                                                        data: { confirm: "削除してもよろしいですか？" }, class: 'trash-alt-icon'
+                                                        data: { confirm: "削除してもよろしいですか？" }, class: 'trash-alt-icon mx-2'
     .contents.py-3
       h2 = @article.title
       p.text-secondary.text-right
