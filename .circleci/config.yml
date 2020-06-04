@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
 
-      # https://discuss.circleci.com/t/using-bundler-2-0-during-ci-fails/27411/3
+      #  https://discuss.circleci.com/t/using-bundler-2-0-during-ci-fails/27411/3
       - run:
           name: Configure Bundler
           command: |
