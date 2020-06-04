@@ -90,7 +90,6 @@ body {
 .circle-avatar img {
   width: 100px;
   height: 100px;
-  // border-radius: 50%;
   object-fit: cover;
 }
 
@@ -181,4 +180,9 @@ body {
 // ページネーション枠の色
 .page-link:focus {
   box-shadow: none;
+}
+
+// 投稿画面
+.select-box {
+  width: 150px;
 }
