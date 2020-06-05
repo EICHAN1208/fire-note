@@ -4,18 +4,22 @@
   .form
     .form-group
       = f.label "タイトル", class: 'font-weight-bold'
-      = f.text_field :title, class: 'form-control', placeholder: '必須入力'
+      .badge.badge-danger.ml-2 必須
+      = f.text_field :title, class: 'form-control'
     .form-group
       = f.label "種別", class: 'font-weight-bold'
+      .badge.badge-danger.ml-2 必須
       br
       = f.select :kind, [["火災", "火災"], ["警戒", "警戒"], ["救急", "救急"], ["救助", "救助"], ["その他", "その他"]],
       {include_blank: "選択して下さい"}, {class: 'form-control select-box'}
     .form-group
       = f.label "概要", class: 'font-weight-bold'
-      = f.text_area :summary, rows: 3, class: 'form-control', placeholder: '必須入力'
+      .badge.badge-danger.ml-2 必須
+      = f.text_area :summary, rows: 3, class: 'form-control'
     .form-group
       = f.label "活動内容", class: 'font-weight-bold'
-      = f.text_area :content, rows: 5, class: 'form-control', placeholder: '必須入力'
+      .badge.badge-danger.ml-2 必須
+      = f.text_area :content, rows: 5, class: 'form-control'
     .form-group
       = f.label "Keep(良かったこと)", class: 'font-weight-bold'
       = f.text_area :good_point, rows: 5, class: 'form-control'
