@@ -73,27 +73,28 @@ https://quip.com/FQbQAZSN8x8j
 
 ## 環境構築
 
-- リポジトリを Fork する
-- docker コンテナをビルド
+### EICHAN1208/fire-note リポジトリを あなたのリポジトリに Fork して、git clone してください。
+
+### docker コンテナをビルド
 
 ```
 $ docker-compose build
 ```
 
-- gem のインストール
+### gem のインストール
 
 ```
 $ docker-compose run web gem install bundler
 $ docker-compose run web bundle install
 ```
 
-- パッケージのインストール
+### パッケージのインストール
 
 ```
 $ docker-compose run web yarn install
 ```
 
-- データベースの作成
+### データベースの作成
 
 ```
 $ docker-compose run web bundle exec rails db:create
@@ -101,10 +102,10 @@ $ docker-compose run web bundle exec rails db:migrate
 $ docker-compose run web bundle exec rails db:seed
 ```
 
-- docker の起動
+### docker の起動
 
 ```
 $ docker-compose up
 ```
 
-- localhost:3000 にアクセス
+### localhost:3000 にアクセス
