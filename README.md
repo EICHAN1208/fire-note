@@ -65,6 +65,46 @@ https://quip.com/FQbQAZSN8x8j
 
 ### テーブル設計(ER 図)
 
+<img width="869" alt="スクリーンショット 2020-06-05 11 41 13" src="https://user-images.githubusercontent.com/50512657/83831419-52512e00-a722-11ea-94fb-9bb7cca482cf.png">
+
 ## その他
 
 - レスポンシブ未対応(今後、実装予定)
+
+## 環境構築
+
+- リポジトリを Fork する
+- docker コンテナをビルド
+
+```
+$ docker-compose build
+```
+
+- gem のインストール
+
+```
+$ docker-compose run web gem install bundler
+$ docker-compose run web bundle install
+```
+
+- パッケージのインストール
+
+```
+$ docker-compose run web yarn install
+```
+
+- データベースの作成
+
+```
+$ docker-compose run web bundle exec rails db:create
+$ docker-compose run web bundle exec rails db:migrate
+$ docker-compose run web bundle exec rails db:seed
+```
+
+- docker の起動
+
+```
+$ docker-compose up
+```
+
+- localhost:3000 にアクセス
