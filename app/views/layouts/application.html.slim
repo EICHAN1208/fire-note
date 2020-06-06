@@ -21,7 +21,7 @@ html
               = link_to "FIREノート", "/articles", class: "text-danger navbar-brand"
             .navbar-nav.mr-auto
               = search_form_for @q, html: { class: 'form-inline navigation__search-form', method: 'get' } do |f|
-                = f.search_field :title_cont, class: 'form-control', placeholder: 'キーワードを入力'
+                = f.search_field :title_or_kind_or_summary_or_content_cont, class: 'form-control', placeholder: 'キーワードを入力'
                 = f.submit "記事を検索", class: 'btn btn-danger ml-2'
             ul.navbar-nav
               = image_tag 'pen.png', :size => '20x20', class: 'mt-3'
