@@ -29,7 +29,8 @@
     .tab-content.py-4
       #favorite_rank_articles.tab-pane.active
         - if @all_ranks.present?
-          - @all_ranks.each do |article|
+          - @all_ranks.each do |favorite|
+            - article = favorite.article
             hr
             .top-article-section.d-flex.justify-content-between
               .top-article-section-left.ml-3.mb-0.d-flex.justify-content-start
@@ -43,7 +44,7 @@
                 .favorite-mark.text-danger
                   = icon('fas', 'heart')
                 .favorite-count.text-center
-                  = article.favorites.count
+                  = favorite.count
           hr
         - else
           p 記事がありません。

@@ -14,7 +14,8 @@ class ArticlesController < ApplicationController
   end
 
   def favorites
-    @all_ranks = Article.where(id: Favorite.group(:article_id).order(Arel.sql('count(article_id) desc')).pluck(:article_id)).page(params[:page]).per(20)
+    # @all_ranks = Article.where(id: Favorite.group(:article_id).order(Arel.sql('count(article_id) desc')).pluck(:article_id)).page(params[:page]).per(20)
+    @all_ranks = Favorite.includes(article: :user).group(:article_id).order(Arel.sql('count desc')).select('article_id, count(article_id) as count').page(params[:page]).per(20)
   end
 
   def show
