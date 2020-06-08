@@ -35,10 +35,12 @@
       hr.my-0
       .text-wrap.pt-1.pb-3
         = simple_format(@article.good_point)
+    - if @article.problem.present?
       h4 Ploblem
       hr.my-0
       .text-wrap.pt-1.pb-3
         = simple_format(@article.problem)
+    - if @article.challenge.present?
       h4 Try
       hr.my-0
       .text-wrap.pt-1.pb-3
