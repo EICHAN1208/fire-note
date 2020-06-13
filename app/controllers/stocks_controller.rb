@@ -8,7 +8,7 @@ class StocksController < ApplicationController
 
   def destroy
     @article = Article.find(params[:article_id]) #destroy.js.erbで必要
-    stock = Stock.find_by(article_id: params[:article_id], user_id: current_user.id)
+    stock = current_user.stocks.find_by(article_id: params[:article_id])
     stock.destroy
     # redirect_to article_path(stock.article_id)
   end
