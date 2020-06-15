@@ -38,8 +38,8 @@ Fire ノートは、**消防職員が災害現場で経験したことを記事�
 ### 本番環境
 
 - AWS (EC2・RDS・S3・ACM・Route53)
-- Unicorn
-- Nginx
+- Unicorn(アプリケーションサーバー)
+- Nginx(Web サーバー)
 
 ## 機能一覧
 
